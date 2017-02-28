@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JKDataHelper_Example' do
+  pod 'JKDataHelper', :path => '../'
+
+  target 'JKDataHelper_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
