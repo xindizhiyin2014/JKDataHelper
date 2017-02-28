@@ -11,6 +11,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+
+## Description
+
+this is a tool always to help developer to avoid bugs by the unstable APIs.
+
 ## Installation
 
 JKDataHelper is available through [CocoaPods](http://cocoapods.org). To install
@@ -22,7 +27,7 @@ pod "JKDataHelper"
 
 ## Author
 
-HHL110120, 929097264@qq.com
+xindizhiyin2014, 929097264@qq.com
 
 ## License
 

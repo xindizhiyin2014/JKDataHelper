@@ -7,7 +7,7 @@
 //
 
 #import "JKViewController.h"
-
+#import "JKDataHelper.h"
 @interface JKViewController ()
 
 @end
@@ -18,6 +18,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor whiteColor];
+//    NSArray *arr1 = @[@"123"];
+//    NSLog(@"JKSafeArray(arr1) %@",JKSafeArray(arr1));
+//    NSArray *arr1 = @"12313";
+//    NSLog(@"JKSafeArray(arr1) %@",JKSafeArray(arr1));
+    
+//    NSString *str1 = @[@"123"];
+//    NSLog(@"JKSafeStr(str1) %@",JKSafeStr(str1));
 }
 
 - (void)didReceiveMemoryWarning

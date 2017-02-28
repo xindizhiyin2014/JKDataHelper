@@ -1,0 +1,16 @@
+PODS:
+  - JKDataHelper (0.1.0)
+
+DEPENDENCIES:
+  - JKDataHelper (from `../`)
+
+EXTERNAL SOURCES:
+  JKDataHelper:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JKDataHelper: e1c8cdea07602d4866b4331fd69d8921b631b1af
+
+PODFILE CHECKSUM: 544faa83df11b1bc48e049acad29afb707cf33b0
+
+COCOAPODS: 1.1.1
