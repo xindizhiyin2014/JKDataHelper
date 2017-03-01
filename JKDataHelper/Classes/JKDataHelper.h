@@ -12,10 +12,10 @@
 
 #define JKSafeMutableArray(mutableArray)   [JKDataHelper safeMutableArray:mutableArray]
 
-#define JKSafeDictionary(dict)   [JKDataHelper safeDictionary:dict]
+#define JKSafeDic(dict)   [JKDataHelper safeDictionary:dict]
 
 
-#define JKSafeMutableDictionary(mutableDict)   [JKDataHelper safeMutableDictionary:mutableDict]
+#define JKSafeMutableDic(mutableDict)   [JKDataHelper safeMutableDictionary:mutableDict]
 
 #define JKSafeStr(str)   [JKDataHelper safeStr:str]
 
