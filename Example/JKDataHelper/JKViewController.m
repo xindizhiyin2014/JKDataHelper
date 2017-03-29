@@ -8,6 +8,7 @@
 
 #import "JKViewController.h"
 #import "JKDataHelper.h"
+
 @interface JKViewController ()
 
 @end
@@ -26,6 +27,30 @@
     
 //    NSString *str1 = @[@"123"];
 //    NSLog(@"JKSafeStr(str1) %@",JKSafeStr(str1));
+    
+    //**************************************************
+    //NSArray * testArr = @[@"111",@"222",@"333"];
+    
+    //NSLog(@"object :%@",[testArr objectAtIndex:4]);
+    //NSLog(@"object :%@",testArr[4]);
+    
+    NSMutableArray * mutablArr = [NSMutableArray arrayWithObjects:@"111",@"222",@"333", nil];
+    //NSLog(@"object :%@",mutablArr[5]);
+    //[mutablArr objectAtIndex:5];
+    //[mutablArr addObject:nil];
+    //[mutablArr insertObject:nil atIndex:3];
+    //[mutablArr removeObjectAtIndex:3];
+   // [mutablArr replaceObjectAtIndex:1 withObject:nil];
+    
+    //NSString *str = nil;
+    //NSDictionary *dic = [NSDictionary dictionaryWithObject:@"111" forKey:nil];
+    //NSLog(@"dic:%@",dic);
+    
+  
+    //NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"111",@"aaa",@"222",@"bbb",@"333", nil];
+    
+    //NSMutableDictionary *dic1 = [NSMutableDictionary dictionaryWithObjects:nil forKeys:@[@"111"]];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A7524B1E8BA52D00C3D611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A752471E8BA52D00C3D611 /* LaunchScreen.storyboard */; };
+		04A7524C1E8BA52D00C3D611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A752491E8BA52D00C3D611 /* Main.storyboard */; };
 		04E003311E664043003BA8A6 /* JKDataHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E003301E664043003BA8A6 /* JKDataHelper.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -21,8 +23,6 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		917274F86852F0A6127572AA /* Pods_JKDataHelper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF629A646517786563D63BA5 /* Pods_JKDataHelper_Example.framework */; };
 		E6455D29BF4E6D7DBCF922B3 /* Pods_JKDataHelper_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909010D59E963C80D8ACBC45 /* Pods_JKDataHelper_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		022336A0F3150142A1BCB4CC /* Pods-JKDataHelper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKDataHelper_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKDataHelper_Tests/Pods-JKDataHelper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		04A752481E8BA52D00C3D611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04A7524A1E8BA52D00C3D611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04E003301E664043003BA8A6 /* JKDataHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JKDataHelper.framework; path = "Pods/../build/Debug-iphoneos/JKDataHelper/JKDataHelper.framework"; sourceTree = "<group>"; };
 		1EF754A322C4EE1E7CAE39EA /* JKDataHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JKDataHelper.podspec; path = ../JKDataHelper.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* JKDataHelper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKDataHelper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,8 +62,6 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89E1C1085160883F68AAE17C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		909010D59E963C80D8ACBC45 /* Pods_JKDataHelper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKDataHelper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DAFE940CE1422663045971 /* Pods-JKDataHelper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKDataHelper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKDataHelper_Example/Pods-JKDataHelper_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,10 +138,10 @@
 			children = (
 				6003F59C195388D20070C39A /* JKAppDelegate.h */,
 				6003F59D195388D20070C39A /* JKAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* JKViewController.h */,
 				6003F5A6195388D20070C39A /* JKViewController.m */,
-				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
+				04A752471E8BA52D00C3D611 /* LaunchScreen.storyboard */,
+				04A752491E8BA52D00C3D611 /* Main.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -283,10 +283,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				04A7524B1E8BA52D00C3D611 /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				04A7524C1E8BA52D00C3D611 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +423,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		04A752471E8BA52D00C3D611 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04A752481E8BA52D00C3D611 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		04A752491E8BA52D00C3D611 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04A7524A1E8BA52D00C3D611 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		6003F596195388D20070C39A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -437,14 +453,6 @@
 				6003F5B9195388D20070C39A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71719F9E1E33DC2100824A3D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
