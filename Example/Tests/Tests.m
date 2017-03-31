@@ -7,7 +7,7 @@
 //
 
 @import XCTest;
-
+#import <JKDataHelper/JKDataHelper.h>
 @interface Tests : XCTestCase
 
 @end
@@ -28,7 +28,29 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    //NSString *str = @"111";
+    }
+
+- (void)testArray{
+
+    NSString *str = nil;
+    NSArray *arr = @[str];
+    NSString *arr1 = @[str,@"111"];
+    NSArray *arr2 = @[@"123",str];
+    NSString *arr3 = @[@"123",str,@"abc"];
+
+}
+
+
+- (void)testDictionary{
+
+   //NSString *str1 = @"aaa";
+    NSString *str1 =nil;
+    //NSString *str2 = @"111";
+    NSString *str2 = nil;
+    NSDictionary *dic = @{str1:str2};
+    
 }
 
 @end

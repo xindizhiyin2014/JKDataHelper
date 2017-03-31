@@ -34,7 +34,7 @@
     //NSLog(@"object :%@",[testArr objectAtIndex:4]);
     //NSLog(@"object :%@",testArr[4]);
     
-    NSMutableArray * mutablArr = [NSMutableArray arrayWithObjects:@"111",@"222",@"333", nil];
+   // NSMutableArray * mutablArr = [NSMutableArray arrayWithObjects:@"111",@"222",@"333", nil];
     //NSLog(@"object :%@",mutablArr[5]);
     //[mutablArr objectAtIndex:5];
     //[mutablArr addObject:nil];
@@ -50,7 +50,14 @@
     //NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"111",@"aaa",@"222",@"bbb",@"333", nil];
     
     //NSMutableDictionary *dic1 = [NSMutableDictionary dictionaryWithObjects:nil forKeys:@[@"111"]];
+    //NSString *str1 = nil;
+    //NSDictionary *dic = @{str1:str1};
     
+   // NSString *str =@"222";
+    //NSArray *arr = @[@"111",str];
+    
+    //NSLog(@"class :%@",[arr class]);
+
 }
 
 - (void)didReceiveMemoryWarning

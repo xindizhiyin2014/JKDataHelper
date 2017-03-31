@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		04A7524B1E8BA52D00C3D611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A752471E8BA52D00C3D611 /* LaunchScreen.storyboard */; };
 		04A7524C1E8BA52D00C3D611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A752491E8BA52D00C3D611 /* Main.storyboard */; };
+		04A7524E1E8E47F300C3D611 /* JKDataHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A7524D1E8E47F300C3D611 /* JKDataHelper.framework */; };
+		04A752501E8E480800C3D611 /* JKDataHelper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 04A7524D1E8E47F300C3D611 /* JKDataHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04E003311E664043003BA8A6 /* JKDataHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E003301E664043003BA8A6 /* JKDataHelper.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -37,10 +39,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		04A7524F1E8E47F700C3D611 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				04A752501E8E480800C3D611 /* JKDataHelper.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		022336A0F3150142A1BCB4CC /* Pods-JKDataHelper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKDataHelper_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKDataHelper_Tests/Pods-JKDataHelper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		04A752481E8BA52D00C3D611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04A7524A1E8BA52D00C3D611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04A7524D1E8E47F300C3D611 /* JKDataHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JKDataHelper.framework; path = "../../../Library/Developer/Xcode/DerivedData/JKDataHelper-cttgrfhjjbeyxibcmfprehqxqzgc/Build/Products/Debug-iphonesimulator/JKDataHelper/JKDataHelper.framework"; sourceTree = "<group>"; };
 		04E003301E664043003BA8A6 /* JKDataHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JKDataHelper.framework; path = "Pods/../build/Debug-iphoneos/JKDataHelper/JKDataHelper.framework"; sourceTree = "<group>"; };
 		1EF754A322C4EE1E7CAE39EA /* JKDataHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JKDataHelper.podspec; path = ../JKDataHelper.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* JKDataHelper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKDataHelper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A7524E1E8E47F300C3D611 /* JKDataHelper.framework in Frameworks */,
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -122,6 +139,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04A7524D1E8E47F300C3D611 /* JKDataHelper.framework */,
 				04E003301E664043003BA8A6 /* JKDataHelper.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
@@ -233,6 +251,7 @@
 				6003F5AC195388D20070C39A /* Resources */,
 				23C9A8AFE78929133CDF0D0A /* [CP] Embed Pods Frameworks */,
 				8552E9F4CD52DBAEC32D58B0 /* [CP] Copy Pods Resources */,
+				04A7524F1E8E47F700C3D611 /* CopyFiles */,
 			);
 			buildRules = (
 			);

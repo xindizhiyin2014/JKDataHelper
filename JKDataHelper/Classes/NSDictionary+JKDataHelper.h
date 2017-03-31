@@ -11,6 +11,4 @@
 @interface NSDictionary (JKDataHelper)
 
 
-+ (instancetype)JKsafedictionaryWithObjectsAndKeys:(id)firstObject, ...;
-
 @end

@@ -21,13 +21,17 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        //Class targetClass = NSClassFromString(@"__NSDictionaryI");
-        Class targetClass = [self class];
+        Class targetClass = NSClassFromString(@"__NSDictionaryI");
         [self JKswizzleMethod:@selector(dictionaryWithObject:forKey:) withMethod:@selector(JKsafeDictionaryWithObject:forKey:) withClass:targetClass];
        
         [self JKswizzleMethod:@selector(dictionaryWithObjectsAndKeys:) withMethod:@selector(JKsafedictionaryWithObjectsAndKeys:) withClass:targetClass];
         
         [self JKswizzleMethod:@selector(dictionaryWithObjects:forKeys:) withMethod:@selector(JKsafeDictionaryWithObjects:forKeys:) withClass:targetClass];
+        
+        [self JKswizzleMethod:@selector(initWithObjects:forKeys:count:) withMethod:@selector(JKsafeinitWithObjects:forKeys:count:) withClass:NSClassFromString(@"__NSPlaceholderDictionary")];
+        
+        
+        
         
     });
     
@@ -60,7 +64,7 @@
     va_start(list, firstObject);
     [objects addObject:firstObject];
     id arg = nil;
-    while (arg = va_arg(list, id)) {
+    while ((arg = va_arg(list, id))) {
         
         [objects addObject:arg];
         
@@ -72,9 +76,7 @@
         JKDataHelperLog(@"[__NSDictionaryI dictionaryWithObjectsAndKeys:]: second object of each pair must be non-nil");
         return nil;
 
-    }
-    NSDictionary *dic = [NSDictionary dictionary];
-    
+    }    
     id value = nil;
     id key = nil;
     NSMutableArray *values = [NSMutableArray new];
@@ -112,8 +114,17 @@
 
 }
 
-- (void)setValue:(nullable id)value forKey:(NSString *)key{
-
+- (instancetype)JKsafeinitWithObjects:(int **)objects forKeys:(int **)keys count:(NSInteger)count{
+    for (int i =0; i<count; i++) {
+        if (!objects[i] || !keys[i]) {
+            JKDataHelperLog([NSString stringWithFormat:@"[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil to objects[%d]",i]);
+            return nil;
+        }
+    }
+    
+    return [self JKsafeinitWithObjects:objects forKeys:keys count:count];
+    
+    
 
 }
 
