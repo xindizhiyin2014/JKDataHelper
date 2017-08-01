@@ -57,7 +57,7 @@
 }
 
 - (void)JKsafeInsertObject:(id)anObject atIndex:(NSUInteger)index{
-    if (index >=0 && index <= self.count) {
+    if (index <= self.count) {
         if (anObject) {
             
             [self JKsafeInsertObject:anObject atIndex:index];
@@ -76,7 +76,7 @@
 
 
 - (void)JKsafeRemoveObjectAtIndex:(NSUInteger)index{
-    if (index >=0 && index < self.count) {
+    if (index < self.count) {
         
         [self JKsafeRemoveObjectAtIndex:index];
         
@@ -89,7 +89,7 @@
 
 
 - (void)JKsafeReplaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject{
-    if (index >=0 && index < self.count) {
+    if (index < self.count) {
         
         if (anObject) {
             [self JKsafeReplaceObjectAtIndex:index withObject:anObject];

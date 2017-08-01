@@ -38,7 +38,9 @@
     NSArray *arr = @[str];
     NSString *arr1 = @[str,@"111"];
     NSArray *arr2 = @[@"123",str];
-    NSString *arr3 = @[@"123",str,@"abc"];
+    NSArray *arr3 = @[@"123",str,@"abc"];
+    NSArray *arr4 = @[@"111",@"222",@"333"];
+    
 
 }
 
@@ -52,6 +54,16 @@
     NSDictionary *dic = @{str1:str2};
     
 }
+
+
+- (void)testMutableArray{
+    NSMutableArray *array = [NSMutableArray arrayWithObjects:@"111",@"222",@"333", nil];
+    [array removeObject:nil];
+    [array replaceObjectAtIndex:1 withObject:@"aaa"];
+    NSLog(@"array %@",array);
+    [array removeObjectAtIndex:5];
+}
+
 
 @end
 

@@ -9,6 +9,10 @@
 #import "NSDictionary+JKDataHelper.h"
 #import "NSObject+JK.h"
 #import <objc/message.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wobjc-protocol-method-implementation"
+
 @interface NSDictionary()
 
 + (instancetype)JKsafedictionaryWithObjectsAndKeys:(id)firstObject, ...;
@@ -117,7 +121,7 @@
 - (instancetype)JKsafeinitWithObjects:(int **)objects forKeys:(int **)keys count:(NSInteger)count{
     for (int i =0; i<count; i++) {
         if (!objects[i] || !keys[i]) {
-            JKDataHelperLog([NSString stringWithFormat:@"[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil to objects[%d]",i]);
+            JKDataHelperLog(@"%@", [NSString stringWithFormat:@"[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil to objects[%d]",i]);
             return nil;
         }
     }
@@ -129,3 +133,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop

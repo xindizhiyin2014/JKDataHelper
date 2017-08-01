@@ -1,5 +1,5 @@
 PODS:
-  - JKDataHelper (0.1.1)
+  - JKDataHelper (0.1.5)
 
 DEPENDENCIES:
   - JKDataHelper (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JKDataHelper: 957a08d46063146733ae220e67e9e517b0895cca
+  JKDataHelper: 05496b2e23f45f6ab0f422a6f160b64221ed22f9
 
 PODFILE CHECKSUM: 544faa83df11b1bc48e049acad29afb707cf33b0
 

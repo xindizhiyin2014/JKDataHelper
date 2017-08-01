@@ -48,7 +48,7 @@
         
         if (!objects[i]) {
         
-            JKDataHelperLog([NSString stringWithFormat:@"[__NSPlaceholderArray initWithObjects:count:]: attempt to insert nil to objects[%d]",i]);
+            JKDataHelperLog(@"%@", [NSString stringWithFormat:@"[__NSPlaceholderArray initWithObjects:count:]: attempt to insert nil to objects[%d]",i]);
             return nil;
 
             

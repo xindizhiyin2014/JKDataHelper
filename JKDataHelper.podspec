@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKDataHelper'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'this is a tool alalways to help developer to avoid bugs by the unstable APIs..'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-this is a tool alalways to help developer to avoid bugs by the unstable APIs.
+this is a tool alalways to help developer to avoid bugs by the unstable APIs.and it will update with demands
                        DESC
 
   s.homepage         = 'https://github.com/xindizhiyin2014/JKDataHelper'
