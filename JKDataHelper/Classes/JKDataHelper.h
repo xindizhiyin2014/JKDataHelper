@@ -31,7 +31,6 @@
 
 @interface JKDataHelper : NSObject
 
-
 /**
  judge the paramter is a kind of class NSArray , if yes return the array,if not return nil
 
