@@ -57,6 +57,8 @@
     //NSArray *arr = @[@"111",str];
     
     //NSLog(@"class :%@",[arr class]);
+    NSArray * array = @[@"1",@"2"];
+    NSInteger index = [array jk_integerWithIndex:0];
 
 }
 
