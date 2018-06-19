@@ -5,9 +5,7 @@
 //  Copyright © 2016年 jack. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "NSArray+JKDataHelper.h"
-#import "NSMutableArray+JKDataHelper.h"
-#import "NSDictionary+JKDataHelper.h"
+
 
 @interface JKDataHelper : NSObject
 
