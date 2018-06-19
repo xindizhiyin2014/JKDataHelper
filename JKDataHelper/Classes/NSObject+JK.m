@@ -7,7 +7,7 @@
 //
 
 #import "NSObject+JK.h"
-
+#import "JKDataHelperMacro.h"
 @implementation NSObject (JK)
 
 + (void)JKswizzleMethod:(SEL)origSelector withMethod:(SEL)newSelector withClass:(Class)targetClass

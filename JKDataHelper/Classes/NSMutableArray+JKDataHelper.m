@@ -7,15 +7,18 @@
 //
 
 #import "NSMutableArray+JKDataHelper.h"
+#import "JKDataHelperMacro.h"
 #import "NSObject+JK.h"
 
 @implementation NSMutableArray (JKDataHelper)
+#ifdef JKDataHelperDebug
 
 + (void)load{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class targetClass = NSClassFromString(@"__NSArrayM");
         [self JKswizzleMethod:@selector(objectAtIndex:) withMethod:@selector(JKsafeObjectAtIndex:) withClass:targetClass];
+        [self JKswizzleMethod:@selector(objectAtIndexedSubscript:) withMethod:@selector(JKsafeObjectAtIndexedSubscript:) withClass:targetClass];
         [self JKswizzleMethod:@selector(addObject:) withMethod:@selector(JKsafeAddObject:) withClass:targetClass];
         [self JKswizzleMethod:@selector(insertObject:atIndex:) withMethod:@selector(JKsafeInsertObject:atIndex:) withClass:targetClass];
         [self JKswizzleMethod:@selector(removeObjectAtIndex:) withMethod:@selector(JKsafeRemoveObjectAtIndex:) withClass:targetClass];
@@ -28,6 +31,15 @@
         return [self JKsafeObjectAtIndex:index];
     }else{
         JKDataHelperLog(@"[__NSArrayM objectAtIndex:]  index is greater than the mutableArray.count or the index is less than zero");
+        return nil;
+    }
+}
+
+- (id)JKsafeObjectAtIndexedSubscript:(NSInteger)index{
+    if (index >=0 && index < self.count) {
+        return [self JKsafeObjectAtIndex:index];
+    }else{
+        JKDataHelperLog(@"[__NSArrayM objectAtIndexedSubscript:] index is greater than the array.count or the index is less than zero");
         return nil;
     }
 }
@@ -71,5 +83,7 @@
         JKDataHelperLog(@"the  index is greater than the mutableArray.count or the index is less than zero");
     }
 }
+
+#endif
 
 @end

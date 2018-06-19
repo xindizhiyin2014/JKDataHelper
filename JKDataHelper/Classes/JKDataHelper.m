@@ -5,7 +5,7 @@
 //
 
 #import "JKDataHelper.h"
-
+#import "JKDataHelperMacro.h"
 @implementation JKDataHelper
 
 + (NSArray *)safeArray:(id)array {

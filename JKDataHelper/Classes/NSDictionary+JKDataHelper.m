@@ -7,6 +7,7 @@
 //
 
 #import "NSDictionary+JKDataHelper.h"
+#import "JKDataHelperMacro.h"
 #import "NSObject+JK.h"
 #import <objc/message.h>
 
@@ -20,6 +21,7 @@
 @end
 
 @implementation NSDictionary (JKDataHelper)
+#ifdef JKDataHelperDebug
 
 + (void)load{
     static dispatch_once_t onceToken;
@@ -31,6 +33,8 @@
         [self JKswizzleMethod:@selector(initWithObjects:forKeys:count:) withMethod:@selector(JKsafeinitWithObjects:forKeys:count:) withClass:NSClassFromString(@"__NSPlaceholderDictionary")];
     });
 }
+
+#endif
 
 
 - (BOOL)jk_hasKey:(NSString *)key
@@ -326,6 +330,7 @@
     return rect;
 }
 
+#ifdef JKDataHelperDebug
 
 + (instancetype)JKsafeDictionaryWithObject:(id)object forKey:(id <NSCopying>)key{
     if (object) {
@@ -389,6 +394,8 @@
     }
     return [self JKsafeinitWithObjects:objects forKeys:keys count:count];
 }
+
+#endif
 
 @end
 
