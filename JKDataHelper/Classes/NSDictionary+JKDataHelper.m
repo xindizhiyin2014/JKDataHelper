@@ -254,6 +254,11 @@
     }
     return 0;
 }
+
+- (CGFloat)jk_cgFloatForKey:(id)key{
+    CGFloat value = (CGFloat)[self jk_floatForKey:key];
+    return value;
+}
 - (double)jk_doubleForKey:(id)key
 {
     id value = [self objectForKey:key];

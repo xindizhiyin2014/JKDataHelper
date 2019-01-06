@@ -246,6 +246,11 @@
     }
     return 0;
 }
+
+- (CGFloat)jk_cgFloatWithIndex:(NSUInteger)index{
+    CGFloat value = (CGFloat)[self jk_floatWithIndex:index];
+    return value;
+}
 - (double)jk_doubleWithIndex:(NSUInteger)index
 {
     id value = [self jk_objectWithIndex:index];

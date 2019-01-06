@@ -40,6 +40,8 @@
 
 - (float)jk_floatWithIndex:(NSUInteger)index;
 
+- (CGFloat)jk_cgFloatWithIndex:(NSUInteger)index;
+
 - (double)jk_doubleWithIndex:(NSUInteger)index;
 
 - (NSDate *)jk_dateWithIndex:(NSUInteger)index dateFormat:(NSString *)dateFormat;
