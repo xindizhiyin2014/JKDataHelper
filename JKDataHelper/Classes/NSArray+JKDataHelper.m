@@ -282,6 +282,22 @@
     return nil;
 }
 
+- (NSMutableArray *)jk_valueArrayWithKey:(NSString *)key{
+    if (!key) {
+        NSAssert(NO, @"key can not be nil");
+    }
+    NSMutableArray *values = [NSMutableArray new];
+    for (NSDictionary *dic in self) {
+        if ([dic isKindOfClass:[NSDictionary class]]) {
+           NSAssert(NO, @"value must be an instance of NSDictionary");
+        }
+        id value =  [dic objectForKey:key];
+        [values addObject:value];
+    }
+    return values;
+    
+}
+
 //CG
 - (CGFloat)jk_CGFloatWithIndex:(NSUInteger)index
 {

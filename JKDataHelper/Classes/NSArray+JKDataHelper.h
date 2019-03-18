@@ -45,6 +45,14 @@
 - (double)jk_doubleWithIndex:(NSUInteger)index;
 
 - (NSDate *)jk_dateWithIndex:(NSUInteger)index dateFormat:(NSString *)dateFormat;
+
+/**
+ 当前array的元素为NSDictionary类型
+
+ @param key key
+ @return key对应的value组成的数组
+ */
+- (NSMutableArray *)jk_valueArrayWithKey:(NSString *)key;
 //CG
 - (CGFloat)jk_CGFloatWithIndex:(NSUInteger)index;
 
