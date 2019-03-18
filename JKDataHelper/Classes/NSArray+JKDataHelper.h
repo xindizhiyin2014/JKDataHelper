@@ -53,6 +53,20 @@
  @return key对应的value组成的数组
  */
 - (NSMutableArray *)jk_valueArrayWithKey:(NSString *)key;
+
+/**
+ 升序
+
+ @return 排序后的数组
+ */
+- (NSMutableArray *)jk_ascSort;
+
+/**
+ 降序
+
+ @return 排序后的数组
+ */
+- (NSMutableArray *)jk_descSort;
 //CG
 - (CGFloat)jk_CGFloatWithIndex:(NSUInteger)index;
 

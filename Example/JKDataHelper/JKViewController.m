@@ -8,6 +8,7 @@
 
 #import "JKViewController.h"
 #import "JKDataHelper.h"
+#import "JKDataHelperMacro.h"
 
 @interface JKViewController ()
 
@@ -29,10 +30,10 @@
 //    NSLog(@"JKSafeStr(str1) %@",JKSafeStr(str1));
     
     //**************************************************
-    NSArray * testArr = @[@"111",@"222",@"333"];
-    
-    NSLog(@"object :%@",[testArr objectAtIndex:4]);
-    NSLog(@"object :%@",testArr[4]);
+//    NSArray * testArr = @[@"111",@"222",@"333"];
+//
+//    NSLog(@"object :%@",[testArr objectAtIndex:4]);
+//    NSLog(@"object :%@",testArr[4]);
     
     //NSMutableArray * mutablArr = [NSMutableArray arrayWithObjects:@"111",@"222",@"333", nil];
     //NSLog(@"object :%@",mutablArr[5]);
@@ -59,6 +60,11 @@
 //    NSLog(@"class :%@",[arr class]);
 //    NSArray * array = @[@"1",@"2"];
 //    NSInteger index = [array jk_integerWithIndex:0];
+    
+    NSArray *array = @[@"1",@"9",@"5",@"11",@"8",@"10"];
+   NSMutableArray *tempArry = [array jk_descSort];
+    NSLog(@"%@",tempArry);
+    
 
 }
 
