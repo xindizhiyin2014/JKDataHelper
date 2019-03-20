@@ -335,6 +335,11 @@
     return rect;
 }
 
+- (BOOL)jk_containKey:(NSString *)key{
+    if (!key) return NO;
+    return self[key] != nil;
+}
+
 #ifdef JKDataHelperDebug
 
 + (instancetype)JKsafeDictionaryWithObject:(id)object forKey:(id <NSCopying>)key{

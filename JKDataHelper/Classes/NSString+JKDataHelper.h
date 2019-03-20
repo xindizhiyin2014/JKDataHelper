@@ -25,6 +25,15 @@ NS_ASSUME_NONNULL_BEGIN
  @return 过滤后的字符串
  */
 - (NSString *)jk_trimWhiteSpaceAndNewLine;
+
+
+/**
+ url的query进行拼NSDictionary的操作
+
+ @return NSDictionary对象
+ */
+- (NSDictionary*)jk_URLQueryDictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END

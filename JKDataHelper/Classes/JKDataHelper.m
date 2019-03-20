@@ -56,4 +56,19 @@
     return nil;
 }
 
++ (BOOL)judgeEmptyStr:(NSString *)str{
+    if (!str) {
+        return YES;
+    }
+    if (![str isKindOfClass:[NSString class]]) {
+        return YES;
+    }
+    
+    if (str.length == 0) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

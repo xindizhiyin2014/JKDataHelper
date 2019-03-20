@@ -68,6 +68,8 @@
  */
 + (id)safeObj:(id)obj;
 
++ (BOOL)judgeEmptyStr:(NSString *)str;
+
 
 
 @end

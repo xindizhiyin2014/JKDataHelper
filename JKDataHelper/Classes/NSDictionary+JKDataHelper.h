@@ -58,4 +58,7 @@
 - (CGSize)jk_sizeForKey:(id)key;
 
 - (CGRect)jk_rectForKey:(id)key;
+
+- (BOOL)jk_containKey:(NSString *)key;
+
 @end
