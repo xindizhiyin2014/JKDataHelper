@@ -17,30 +17,19 @@
   return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (NSDictionary*)jk_URLQueryDictionary{
-    NSMutableDictionary *mute = @{}.mutableCopy;
-    for (NSString *query in [self componentsSeparatedByString:@"&"]) {
-        NSArray *components = [query componentsSeparatedByString:@"="];
-        if (components.count == 0) {
-            continue;
+//将url ？后的字符串转换为NSDictionary对象
+- (NSMutableDictionary *)jk_urlStringConvertToDictionary:(NSString *)urlString{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSArray *parameterArr = [urlString componentsSeparatedByString:@"&"];
+    for (NSString *parameter in parameterArr) {
+        NSArray *parameterBoby = [parameter componentsSeparatedByString:@"="];
+        if (parameterBoby.count == 2) {
+            [dic setObject:parameterBoby[1] forKey:parameterBoby[0]];
+        }else
+        {
+            return nil;
         }
-        NSString *key = [components[0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        id value = nil;
-        if (components.count == 1) {
-            // key with no value
-            value = [NSNull null];
-        }
-        if (components.count == 2) {
-            value = [components[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            // cover case where there is a separator, but no actual value
-            value = [value length] ? value : [NSNull null];
-        }
-        if (components.count > 2) {
-            // invalid - ignore this pair. is this best, though?
-            continue;
-        }
-        mute[key] = value ?: [NSNull null];
     }
-    return mute.count ? mute.copy : nil;
+    return dic;
 }
 @end

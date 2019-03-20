@@ -28,11 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- url的query进行拼NSDictionary的操作
+ 将url的的完整字符串的query拼成字典
 
- @return NSDictionary对象
+ @param urlString url的完整字符串
+ @return 字典对象
  */
-- (NSDictionary*)jk_URLQueryDictionary;
+- (NSMutableDictionary *)jk_urlStringConvertToDictionary:(NSString *)urlString;
 
 @end
 
