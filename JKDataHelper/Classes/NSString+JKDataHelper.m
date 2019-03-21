@@ -18,9 +18,9 @@
 }
 
 //将url ？后的字符串转换为NSDictionary对象
-- (NSMutableDictionary *)jk_urlStringConvertToDictionary:(NSString *)urlString{
+- (NSMutableDictionary *)jk_urlStringConvertToDictionary{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    NSArray *parameterArr = [urlString componentsSeparatedByString:@"&"];
+    NSArray *parameterArr = [self componentsSeparatedByString:@"&"];
     for (NSString *parameter in parameterArr) {
         NSArray *parameterBoby = [parameter componentsSeparatedByString:@"="];
         if (parameterBoby.count == 2) {
