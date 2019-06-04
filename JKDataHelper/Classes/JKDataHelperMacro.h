@@ -33,6 +33,6 @@
 
 #define JKSafeObj(obj)   [JKDataHelper safeObj:obj]
 
-#define JKIsEmptyStr(str) [JKDataHelper judgeEmptyStr:str]
+#define JKIsEmptyStr(str) [JKDataHelper isEmptyStr:str]
 
 #endif /* JKDataHelperMacro_h */

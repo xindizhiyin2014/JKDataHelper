@@ -56,7 +56,7 @@
     return nil;
 }
 
-+ (BOOL)judgeEmptyStr:(NSString *)str{
++ (BOOL)isEmptyStr:(NSString *)str{
     if (!str) {
         return YES;
     }
@@ -65,6 +65,9 @@
     }
     
     if (str.length == 0) {
+        return YES;
+    }
+    if ([str isEqualToString:@"<null>"]) {
         return YES;
     }
     
