@@ -47,11 +47,7 @@
 - (NSString*)jk_stringForKey:(NSString *)key
 {
     id value = [self objectForKey:key];
-    if (value == nil || value == [NSNull null])
-    {
-        return nil;
-    }
-    if ([[value description] isEqualToString:@"(null)"]) {
+    if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"] || [[value description] isEqualToString:@"(null)"]){
         return nil;
     }
     if ([value isKindOfClass:[NSString class]]) {

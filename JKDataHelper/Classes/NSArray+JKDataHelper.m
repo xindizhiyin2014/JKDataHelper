@@ -39,7 +39,7 @@
 - (NSString*)jk_stringWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"])
+    if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"] || [[value description] isEqualToString:@"(null)"])
     {
         return nil;
     }

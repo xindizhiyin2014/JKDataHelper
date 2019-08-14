@@ -63,6 +63,9 @@
     if (str.length == 0) {
         return YES;
     }
+    if ([[str description] isEqualToString:@"<null>"] || [[str description] isEqualToString:@"(null)"]) {
+        return YES;
+    }
     if (![str isKindOfClass:[NSString class]]) {
         #if DEBUG
         NSLog(@"%@ is not a string",str);
