@@ -12,6 +12,9 @@
 
 @interface JKViewController ()
 
+@property (nonatomic,strong) NSArray *names;
+@property (nonatomic,copy) NSArray *addresses;
+
 @end
 
 @implementation JKViewController
@@ -61,9 +64,13 @@
 //    NSArray * array = @[@"1",@"2"];
 //    NSInteger index = [array jk_integerWithIndex:0];
     
-    NSArray *array = @[@"1",@"9",@"5",@"11",@"8",@"10"];
-   NSMutableArray *tempArry = [array jk_descSort];
-    NSLog(@"%@",tempArry);
+//    NSArray *array = @[@"1",@"9",@"5",@"11",@"8",@"10"];
+//   NSMutableArray *tempArry = [array jk_descSort];
+//    NSLog(@"%@",tempArry);
+    
+    
+
+    
     
 
 }

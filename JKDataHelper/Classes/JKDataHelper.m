@@ -56,18 +56,19 @@
     return nil;
 }
 
-+ (BOOL)judgeEmptyStr:(NSString *)str{
++ (BOOL)isEmptyStr:(NSString *)str{
     if (!str) {
         return YES;
     }
-    if (![str isKindOfClass:[NSString class]]) {
-        return YES;
-    }
-    
     if (str.length == 0) {
         return YES;
     }
-    
+    if (![str isKindOfClass:[NSString class]]) {
+        #if DEBUG
+        NSLog(@"%@ is not a string",str);
+        #endif
+        return NO;
+    }
     return NO;
 }
 
