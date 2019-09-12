@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		05CF2A1DD485C11EC8DCFB3A8AE196BB /* Pods-JKDataHelper_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D64180DCE4E3BA0F419DF4A73C0BDD4A /* Pods-JKDataHelper_Example-dummy.m */; };
-		0971D4ABA8CC58EBDE6FB26487DA5E2F /* JKDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 725851B54EA5426DC5FFB4B1136FCFB9 /* JKDataHelper.m */; };
 		09A6C0EE5F6C38BDB34F6D68820DA4BB /* JKDataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E260332BE5FA335A4A2C894D44E54B5 /* JKDataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1CF529CC18B675207194D2AAC78C8DC6 /* NSDictionary+JKDataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EE6F9DEB21CF5D4A82539F7A3D07DA1A /* NSDictionary+JKDataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20E9280C2BCF15A9766EE8FE23206D25 /* Pods-JKDataHelper_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C4C7C4D46F32AF500D1033C81C5A0AB6 /* Pods-JKDataHelper_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		376716062CD7A2EC998F9DBC451148C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		3B387D825F6D04D48F93B01175467D61 /* NSMutableArray+JKDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4C9AAFADBC28E60DC79451920DC1FB /* NSMutableArray+JKDataHelper.m */; };
 		569AFDF33C07357DD24D4F7A4E7AD634 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		6734F153E8CD3C62B0AA5F27A14002D1 /* NSArray+JKDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F1C2AF8788C65274162D3367602E2A /* NSArray+JKDataHelper.m */; };
 		71A481970119C2D32FDE7F6ADFC60EA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -21,11 +19,7 @@
 		909EE670B37602DABE5172E4B9CCB51E /* JKDataHelper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 38FE47210C4582D3D8D63FB68D2BEAEE /* JKDataHelper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F40FC3B9C955C54BB25BFD076888DD5 /* JKDataHelper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C8A78D14AD71834D66BB6C08D1D29E /* JKDataHelper-dummy.m */; };
 		A595255382522BA33993EA7105E18F98 /* NSString+JKDataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A4A61DF98C0FFA300FE194A8E929F9 /* NSString+JKDataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A9CD499833B33DCB66291206F253F40F /* JKDataHelperMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = C9A47C82AB3C19D2FD342D58F10504CF /* JKDataHelperMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AD98D5F336117635E4967BA165FAE76A /* NSMutableArray+JKDataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E1DCB3418A6F3AB7601A102D5C35EA /* NSMutableArray+JKDataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6A9653E2D372F7A7109E6562D3E8AFF /* NSArray+JKDataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DD2B17455811BBECD1FC0688741A529 /* NSArray+JKDataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C0FF8730DC95E39B49A90FF63A61319E /* NSObject+JK.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E614120F6B52AEDFC1F72691A950FF /* NSObject+JK.m */; };
-		C3F008D6ACA086076A1267DCD1ED191D /* NSObject+JK.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F56EB63742C4082D37E591FA97A28C /* NSObject+JK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9BCE78421DF4A60C10802B9C7FC4A1F /* Pods-JKDataHelper_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5F3E844927704409F255163B0B482B /* Pods-JKDataHelper_Tests-dummy.m */; };
 		E5EEEF6CF7F5C7297CFA8E85D9D41479 /* NSString+JKDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC46130DAD9ED81741758AE31C61F59 /* NSString+JKDataHelper.m */; };
 		FF197916C0C04F2D37C8B4DEA14F39FD /* Pods-JKDataHelper_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C3BBC0C75E2188FB03E44B6759E0F6A0 /* Pods-JKDataHelper_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,7 +45,7 @@
 /* Begin PBXFileReference section */
 		10F1C2AF8788C65274162D3367602E2A /* NSArray+JKDataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+JKDataHelper.m"; path = "JKDataHelper/Classes/NSArray+JKDataHelper.m"; sourceTree = "<group>"; };
 		122995E2F7FA97457ABB165E891E372C /* Pods-JKDataHelper_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JKDataHelper_Example-Info.plist"; sourceTree = "<group>"; };
-		22AFDE1ED3640EEE9C6EEE4C0A7440C5 /* Pods_JKDataHelper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JKDataHelper_Tests.framework; path = "Pods-JKDataHelper_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22AFDE1ED3640EEE9C6EEE4C0A7440C5 /* Pods_JKDataHelper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKDataHelper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		235778FF3FA2D47A0E5B00674456279A /* JKDataHelper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JKDataHelper.xcconfig; sourceTree = "<group>"; };
 		2A08D5EDC2CA5BD8D86ADBF5900790EF /* Pods-JKDataHelper_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JKDataHelper_Example-frameworks.sh"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -60,38 +54,32 @@
 		4BFD8AF94D736DD4E37E8E9AFFFC0C92 /* Pods-JKDataHelper_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JKDataHelper_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		51FC1EB8E988A78B24FEAEEC57BC177D /* Pods-JKDataHelper_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JKDataHelper_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		569ED409D32CE93C0FCAE35816EEA384 /* Pods-JKDataHelper_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JKDataHelper_Tests-Info.plist"; sourceTree = "<group>"; };
-		57E614120F6B52AEDFC1F72691A950FF /* NSObject+JK.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+JK.m"; path = "JKDataHelper/Classes/NSObject+JK.m"; sourceTree = "<group>"; };
 		590ADB9EAC281DA932DF177603AE7920 /* JKDataHelper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JKDataHelper-prefix.pch"; sourceTree = "<group>"; };
 		5BA9397CF3182F8385C8817322E80D5D /* Pods-JKDataHelper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JKDataHelper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		63E1DCB3418A6F3AB7601A102D5C35EA /* NSMutableArray+JKDataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+JKDataHelper.h"; path = "JKDataHelper/Classes/NSMutableArray+JKDataHelper.h"; sourceTree = "<group>"; };
-		67F2AA2DE3C9F6731D21DBA4DA96F685 /* Pods_JKDataHelper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JKDataHelper_Example.framework; path = "Pods-JKDataHelper_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C992373DBE76198593911343C3AF27A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		6DE67D52BF98AD29AA6CB9F61011D126 /* JKDataHelper.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JKDataHelper.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		67F2AA2DE3C9F6731D21DBA4DA96F685 /* Pods_JKDataHelper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKDataHelper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C992373DBE76198593911343C3AF27A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6DE67D52BF98AD29AA6CB9F61011D126 /* JKDataHelper.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JKDataHelper.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		70E313426EC1CD689DE8D4DE8C4EE47C /* JKDataHelper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JKDataHelper.modulemap; sourceTree = "<group>"; };
-		725851B54EA5426DC5FFB4B1136FCFB9 /* JKDataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JKDataHelper.m; path = JKDataHelper/Classes/JKDataHelper.m; sourceTree = "<group>"; };
 		73A4A61DF98C0FFA300FE194A8E929F9 /* NSString+JKDataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+JKDataHelper.h"; path = "JKDataHelper/Classes/NSString+JKDataHelper.h"; sourceTree = "<group>"; };
 		7DD2B17455811BBECD1FC0688741A529 /* NSArray+JKDataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+JKDataHelper.h"; path = "JKDataHelper/Classes/NSArray+JKDataHelper.h"; sourceTree = "<group>"; };
 		7E260332BE5FA335A4A2C894D44E54B5 /* JKDataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JKDataHelper.h; path = JKDataHelper/Classes/JKDataHelper.h; sourceTree = "<group>"; };
 		7EC46130DAD9ED81741758AE31C61F59 /* NSString+JKDataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+JKDataHelper.m"; path = "JKDataHelper/Classes/NSString+JKDataHelper.m"; sourceTree = "<group>"; };
 		81A44650B2CC3A2D0A6BB7FB3A9FB52F /* Pods-JKDataHelper_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JKDataHelper_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8A4C9AAFADBC28E60DC79451920DC1FB /* NSMutableArray+JKDataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+JKDataHelper.m"; path = "JKDataHelper/Classes/NSMutableArray+JKDataHelper.m"; sourceTree = "<group>"; };
 		94DAEF21DE9F9BB5BA5B88F8F7BFA65E /* Pods-JKDataHelper_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JKDataHelper_Tests.modulemap"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A57FAC6DFCF2676CE83E932BE48411B1 /* JKDataHelper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JKDataHelper-Info.plist"; sourceTree = "<group>"; };
 		B0898A0897AC48267412FCAB2543AAF5 /* NSDictionary+JKDataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+JKDataHelper.m"; path = "JKDataHelper/Classes/NSDictionary+JKDataHelper.m"; sourceTree = "<group>"; };
 		B2FC6E09B527DFBDD98DEE88C3C17CB2 /* Pods-JKDataHelper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JKDataHelper_Example.release.xcconfig"; sourceTree = "<group>"; };
-		B7F56EB63742C4082D37E591FA97A28C /* NSObject+JK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+JK.h"; path = "JKDataHelper/Classes/NSObject+JK.h"; sourceTree = "<group>"; };
 		BA9784FB272AC3C8DC30FC9CC5E1E489 /* Pods-JKDataHelper_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JKDataHelper_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C3BBC0C75E2188FB03E44B6759E0F6A0 /* Pods-JKDataHelper_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JKDataHelper_Tests-umbrella.h"; sourceTree = "<group>"; };
 		C4C7C4D46F32AF500D1033C81C5A0AB6 /* Pods-JKDataHelper_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JKDataHelper_Example-umbrella.h"; sourceTree = "<group>"; };
-		C9A47C82AB3C19D2FD342D58F10504CF /* JKDataHelperMacro.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JKDataHelperMacro.h; path = JKDataHelper/Classes/JKDataHelperMacro.h; sourceTree = "<group>"; };
 		CF852B3DEA8458A84263FF6F02942428 /* Pods-JKDataHelper_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JKDataHelper_Example.modulemap"; sourceTree = "<group>"; };
 		D64180DCE4E3BA0F419DF4A73C0BDD4A /* Pods-JKDataHelper_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JKDataHelper_Example-dummy.m"; sourceTree = "<group>"; };
 		D8C030513C96B4F3209E6A4EE1835377 /* Pods-JKDataHelper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JKDataHelper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D982D6BEDE45E2EA7AC7421DFFC73A4B /* Pods-JKDataHelper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JKDataHelper_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E770D3BBA60F93DD9998BE1C813364E7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		E770D3BBA60F93DD9998BE1C813364E7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EE6F9DEB21CF5D4A82539F7A3D07DA1A /* NSDictionary+JKDataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+JKDataHelper.h"; path = "JKDataHelper/Classes/NSDictionary+JKDataHelper.h"; sourceTree = "<group>"; };
-		F6C0EF9E5C75364F45A5CABFD3AC4116 /* JKDataHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JKDataHelper.framework; path = JKDataHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6C0EF9E5C75364F45A5CABFD3AC4116 /* JKDataHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JKDataHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5F3E844927704409F255163B0B482B /* Pods-JKDataHelper_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JKDataHelper_Tests-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,16 +145,10 @@
 			isa = PBXGroup;
 			children = (
 				7E260332BE5FA335A4A2C894D44E54B5 /* JKDataHelper.h */,
-				725851B54EA5426DC5FFB4B1136FCFB9 /* JKDataHelper.m */,
-				C9A47C82AB3C19D2FD342D58F10504CF /* JKDataHelperMacro.h */,
 				7DD2B17455811BBECD1FC0688741A529 /* NSArray+JKDataHelper.h */,
 				10F1C2AF8788C65274162D3367602E2A /* NSArray+JKDataHelper.m */,
 				EE6F9DEB21CF5D4A82539F7A3D07DA1A /* NSDictionary+JKDataHelper.h */,
 				B0898A0897AC48267412FCAB2543AAF5 /* NSDictionary+JKDataHelper.m */,
-				63E1DCB3418A6F3AB7601A102D5C35EA /* NSMutableArray+JKDataHelper.h */,
-				8A4C9AAFADBC28E60DC79451920DC1FB /* NSMutableArray+JKDataHelper.m */,
-				B7F56EB63742C4082D37E591FA97A28C /* NSObject+JK.h */,
-				57E614120F6B52AEDFC1F72691A950FF /* NSObject+JK.m */,
 				73A4A61DF98C0FFA300FE194A8E929F9 /* NSString+JKDataHelper.h */,
 				7EC46130DAD9ED81741758AE31C61F59 /* NSString+JKDataHelper.m */,
 				AA0B55844354FE6C3F8A305B668675DC /* Pod */,
@@ -274,11 +256,8 @@
 			files = (
 				909EE670B37602DABE5172E4B9CCB51E /* JKDataHelper-umbrella.h in Headers */,
 				09A6C0EE5F6C38BDB34F6D68820DA4BB /* JKDataHelper.h in Headers */,
-				A9CD499833B33DCB66291206F253F40F /* JKDataHelperMacro.h in Headers */,
 				B6A9653E2D372F7A7109E6562D3E8AFF /* NSArray+JKDataHelper.h in Headers */,
 				1CF529CC18B675207194D2AAC78C8DC6 /* NSDictionary+JKDataHelper.h in Headers */,
-				AD98D5F336117635E4967BA165FAE76A /* NSMutableArray+JKDataHelper.h in Headers */,
-				C3F008D6ACA086076A1267DCD1ED191D /* NSObject+JK.h in Headers */,
 				A595255382522BA33993EA7105E18F98 /* NSString+JKDataHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,11 +403,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F40FC3B9C955C54BB25BFD076888DD5 /* JKDataHelper-dummy.m in Sources */,
-				0971D4ABA8CC58EBDE6FB26487DA5E2F /* JKDataHelper.m in Sources */,
 				6734F153E8CD3C62B0AA5F27A14002D1 /* NSArray+JKDataHelper.m in Sources */,
 				796C2F0CB597CF50667BB0CAFE6FEF45 /* NSDictionary+JKDataHelper.m in Sources */,
-				3B387D825F6D04D48F93B01175467D61 /* NSMutableArray+JKDataHelper.m in Sources */,
-				C0FF8730DC95E39B49A90FF63A61319E /* NSObject+JK.m in Sources */,
 				E5EEEF6CF7F5C7297CFA8E85D9D41479 /* NSString+JKDataHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,8 +511,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
