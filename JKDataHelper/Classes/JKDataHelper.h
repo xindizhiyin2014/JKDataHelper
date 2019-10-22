@@ -133,3 +133,27 @@ static inline BOOL jk_isEmptyStr(NSString * _Nullable str)
     
     return NO;
 }
+
+/// 判断是否是NSNumber类型，如果是返回本身，不是返回nil
+static inline NSNumber * _Nullable jk_safeNumber(id _Nullable obj)
+{
+    if ([obj isKindOfClass:NSNumber.class]) {
+        return obj;
+    }
+    return nil;
+}
+
+/// 判断是否是NSMutableArray类型，如果是返回本身，如果是NSArrary类型，根据数据创建一个NSMutableArray类型的对象
+/// 其余情况返回为nil
+/// @param mutableArray 数组
+static inline NSMutableArray * _Nullable jk_mutableArray(id _Nullable mutableArray)
+{
+    if ([mutableArray isKindOfClass:[NSMutableArray class]]) {
+        return mutableArray;
+    } else if ([mutableArray isKindOfClass:[NSArray class]]) {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:mutableArray];
+        return array;
+    }
+    return nil;
+}
+
