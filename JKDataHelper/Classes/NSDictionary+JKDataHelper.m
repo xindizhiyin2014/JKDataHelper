@@ -22,6 +22,27 @@
     return [self objectForKey:key] != nil;
 }
 
+- (nullable id)jk_objectForKey:(NSString *)key
+                   verifyClass:(nullable Class)theClass
+{
+    id object = [self objectForKey:key];
+    if (!theClass) {
+        return object;
+    }
+
+    if (![theClass isSubclassOfClass:[NSObject class]]) {
+#if DEBUG
+        NSAssert(NO, @"theClass must be subClass of NSObject");
+#endif
+        return nil;
+    }
+        
+    if ([object isKindOfClass:theClass]) {
+        return object;
+    }
+    return nil;
+}
+
 - (NSString*)jk_stringForKey:(NSString *)key
 {
     id value = [self objectForKey:key];

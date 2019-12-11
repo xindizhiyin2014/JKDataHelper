@@ -12,6 +12,12 @@
 
 -(id)jk_objectWithIndex:(NSInteger)index;
 
+/// 根据索引获取元素，并对元素类型进行判定，如果符合正常返回，不符合则返回nil
+/// @param index 索引
+/// @param theClass 指定的类型
+- (nullable id)jk_objectWithIndex:(NSInteger)index
+                      verifyClass:(nullable Class)theClass;
+
 - (NSString*)jk_stringWithIndex:(NSInteger)index;
 
 - (NSNumber*)jk_numberWithIndex:(NSInteger)index;

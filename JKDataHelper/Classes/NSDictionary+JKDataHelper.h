@@ -12,6 +12,12 @@
 
 - (BOOL)jk_hasKey:(NSString *)key;
 
+/// 根据key获取元素值，并对元素类型进行判断
+/// @param key key
+/// @param theClass 进行判定的类
+- (nullable id)vv_objectForKey:(NSString *)key
+                   verifyClass:(nullable Class)theClass;
+
 - (NSString*)jk_stringForKey:(NSString *)key;
 
 - (NSNumber*)jk_numberForKey:(NSString *)key;

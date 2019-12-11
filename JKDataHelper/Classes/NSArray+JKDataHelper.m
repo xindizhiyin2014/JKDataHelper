@@ -22,6 +22,25 @@
     return nil;
 }
 
+- (nullable id)jk_objectWithIndex:(NSInteger)index
+                      verifyClass:(nullable Class)theClass
+{
+    if (!theClass) {
+        return [self jk_objectWithIndex:index];
+    }
+ if (![theClass isSubclassOfClass:[NSObject class]]) {
+#if DEBUG
+        NSAssert(NO, @"theClass must be subClass of NSObject");
+#endif
+        return nil;
+    }
+    id object = [self jk_objectWithIndex:index];
+    if ([object isKindOfClass: theClass]) {
+        return object;
+    }
+    return nil;
+}
+
 - (NSString*)jk_stringWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
