@@ -119,7 +119,7 @@ static inline BOOL jk_isEmptyStr(NSString * _Nullable str)
     if (![str isKindOfClass:[NSString class]]) {
 #if DEBUG
         NSLog(@"func vv_isEmptyStr, str must be kind of NSString class");
-        assert(![str isKindOfClass:[NSString class]]);
+        assert(NO);
 #endif
         return YES; //类型不匹配是当做空字符串处理，要不然很危险
     }

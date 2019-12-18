@@ -8,7 +8,6 @@
 
 #import "JKViewController.h"
 #import "JKDataHelper.h"
-#import "JKDataHelperMacro.h"
 
 @interface JKViewController ()
 
@@ -68,8 +67,13 @@
 //   NSMutableArray *tempArry = [array jk_descSort];
 //    NSLog(@"%@",tempArry);
     
-    
+    NSArray *array = @[@"1",@"9",@"5",@"11",@"8",@"10"];
+    NSString *name = [array jk_objectWithIndex:0 verifyClass:[NSString class]];
+       NSLog(@"%@",name);
 
+    NSDictionary *dic = @{@"name":@"jiji"};
+    NSString *jiji = [dic jk_objectForKey:@"name" verifyClass:[NSString class]];
+    NSLog(@"%@",jiji);
     
     
 

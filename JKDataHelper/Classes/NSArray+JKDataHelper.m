@@ -10,8 +10,8 @@
 
 @implementation NSArray (JKDataHelper)
 
-
--(id)jk_objectWithIndex:(NSInteger)index{
+- (nullable id)jk_objectWithIndex:(NSInteger)index
+{
     
     if (index < 0) {
         return nil;
@@ -41,7 +41,8 @@
     return nil;
 }
 
-- (NSString*)jk_stringWithIndex:(NSInteger)index{
+- (nullable NSString*)jk_stringWithIndex:(NSInteger)index
+{
     
     id value = [self jk_objectWithIndex:index];
     if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"] || [[value description] isEqualToString:@"(null)"])
@@ -57,7 +58,7 @@
     return nil;
 }
 
-- (NSNumber*)jk_numberWithIndex:(NSInteger)index{
+- (nullable NSNumber*)jk_numberWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
     if ([value isKindOfClass:[NSNumber class]]) {
@@ -71,7 +72,7 @@
     return nil;
 }
 
-- (NSDecimalNumber *)jk_decimalNumberWithIndex:(NSInteger)index{
+- (nullable NSDecimalNumber *)jk_decimalNumberWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
     if ([value isKindOfClass:[NSDecimalNumber class]]) {
@@ -88,7 +89,7 @@
     return nil;
 }
 
-- (NSArray*)jk_arrayWithIndex:(NSInteger)index{
+- (nullable NSArray*)jk_arrayWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
     if (value == nil || value == [NSNull null])
@@ -102,7 +103,7 @@
     return nil;
 }
 
-- (NSDictionary*)jk_dictionaryWithIndex:(NSInteger)index{
+- (nullable NSDictionary*)jk_dictionaryWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
     if (value == nil || value == [NSNull null])
@@ -273,7 +274,8 @@
     return 0;
 }
 
-- (NSDate *)jk_dateWithIndex:(NSInteger)index dateFormat:(NSString *)dateFormat {
+- (nullable NSDate *)jk_dateWithIndex:(NSInteger)index
+                           dateFormat:(nonnull NSString *)dateFormat {
     
     id value = [self jk_objectWithIndex:index];
     if (value == nil || value == [NSNull null])
@@ -288,7 +290,7 @@
     return nil;
 }
 
-- (NSMutableArray *)jk_valueArrayWithKey:(NSString *)key{
+- (nonnull NSMutableArray *)jk_valueArrayWithKey:(NSString *)key{
     if (!key) {
         NSAssert(NO, @"key can not be nil");
     }
@@ -303,7 +305,7 @@
     return values;
 }
 
-- (NSMutableArray *)jk_ascSort{
+- (nonnull NSMutableArray *)jk_ascSort{
     NSMutableArray *array = (NSMutableArray *)self;
     if (![self isKindOfClass:[NSMutableArray class]]) {
         array = [NSMutableArray arrayWithArray:self];
@@ -314,7 +316,7 @@
     return array;
 }
 
-- (NSMutableArray *)jk_descSort{
+- (nonnull NSMutableArray *)jk_descSort{
     NSMutableArray *array = (NSMutableArray *)self;
     if (![self isKindOfClass:[NSMutableArray class]]) {
         array = [NSMutableArray arrayWithArray:self];

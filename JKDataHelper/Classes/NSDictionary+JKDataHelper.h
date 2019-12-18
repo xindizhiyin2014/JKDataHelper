@@ -8,58 +8,59 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (JKDataHelper)
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType> (JKDataHelper)
 
-- (BOOL)jk_hasKey:(NSString *)key;
+- (BOOL)jk_hasKey:(nullable NSString *)key;
 
 /// 根据key获取元素值，并对元素类型进行判断
 /// @param key key
 /// @param theClass 进行判定的类
-- (nullable id)vv_objectForKey:(NSString *)key
-                   verifyClass:(nullable Class)theClass;
+- (nullable ObjectType)jk_objectForKey:(nullable NSString *)key
+                          verifyClass:(nullable Class)theClass;
 
-- (NSString*)jk_stringForKey:(NSString *)key;
+- (nullable NSString*)jk_stringForKey:(nonnull NSString *)key;
 
-- (NSNumber*)jk_numberForKey:(NSString *)key;
+- (nullable NSNumber*)jk_numberForKey:(nonnull NSString *)key;
 
-- (NSDecimalNumber *)jk_decimalNumberForKey:(NSString *)key;
+- (nullable NSDecimalNumber *)jk_decimalNumberForKey:(nonnull NSString *)key;
 
-- (NSArray*)jk_arrayForKey:(NSString *)key;
+- (nullable NSArray*)jk_arrayForKey:(nonnull NSString *)key;
 
-- (NSDictionary*)jk_dictionaryForKey:(NSString *)key;
+- (nullable NSDictionary*)jk_dictionaryForKey:(nonnull NSString *)key;
 
-- (NSInteger)jk_integerForKey:(NSString *)key;
+- (NSInteger)jk_integerForKey:(nonnull NSString *)key;
 
-- (NSUInteger)jk_unsignedIntegerForKey:(NSString *)key;
+- (NSUInteger)jk_unsignedIntegerForKey:(nonnull NSString *)key;
 
-- (BOOL)jk_boolForKey:(NSString *)key;
+- (BOOL)jk_boolForKey:(nonnull NSString *)key;
 
-- (int16_t)jk_int16ForKey:(NSString *)key;
+- (int16_t)jk_int16ForKey:(nonnull NSString *)key;
 
-- (int32_t)jk_int32ForKey:(NSString *)key;
+- (int32_t)jk_int32ForKey:(nonnull NSString *)key;
 
-- (int64_t)jk_int64ForKey:(NSString *)key;
+- (int64_t)jk_int64ForKey:(nonnull NSString *)key;
 
-- (char)jk_charForKey:(NSString *)key;
+- (char)jk_charForKey:(nonnull NSString *)key;
 
-- (short)jk_shortForKey:(NSString *)key;
+- (short)jk_shortForKey:(nonnull NSString *)key;
 
-- (float)jk_floatForKey:(NSString *)key;
+- (float)jk_floatForKey:(nonnull NSString *)key;
 
-- (CGFloat)jk_cgFloatForKey:(NSString *)key;
+- (CGFloat)jk_cgFloatForKey:(nonnull NSString *)key;
 
-- (double)jk_doubleForKey:(NSString *)key;
+- (double)jk_doubleForKey:(nonnull NSString *)key;
 
-- (long long)jk_longLongForKey:(NSString *)key;
+- (long long)jk_longLongForKey:(nonnull NSString *)key;
 
-- (unsigned long long)jk_unsignedLongLongForKey:(NSString *)key;
+- (unsigned long long)jk_unsignedLongLongForKey:(nonnull NSString *)key;
 
-- (NSDate *)jk_dateForKey:(NSString *)key dateFormat:(NSString *)dateFormat;
+- (nullable NSDate *)jk_dateForKey:(nonnull NSString *)key
+                        dateFormat:(nonnull NSString *)dateFormat;
 
-- (CGPoint)jk_pointForKey:(NSString *)key;
+- (CGPoint)jk_pointForKey:(nonnull NSString *)key;
 
-- (CGSize)jk_sizeForKey:(NSString *)key;
+- (CGSize)jk_sizeForKey:(nonnull NSString *)key;
 
-- (CGRect)jk_rectForKey:(NSString *)key;
+- (CGRect)jk_rectForKey:(nonnull NSString *)key;
 
 @end
