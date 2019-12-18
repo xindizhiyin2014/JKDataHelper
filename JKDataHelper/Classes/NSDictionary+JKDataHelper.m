@@ -329,4 +329,212 @@
     return rect;
 }
 
+-  (nullable NSDictionary *)jk_dictionaryForKeyPath:(nonnull NSString *)keyPath
+{
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    NSDictionary *dic = self;
+    
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        dic = [dic jk_dictionaryForKey:key];
+        if (!dic) {
+            break;
+        }
+    }
+    
+    return dic;
+}
+
+- (nullable NSArray *)jk_arrayForKeyPath:(nonnull NSString *)keyPath
+{
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    NSDictionary *dic = self;
+    NSArray *array = nil;
+    
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i == keys.count - 1) {
+          array = [dic jk_arrayForKey:key];
+            if (!dic) {
+                break;
+            }
+        }else {
+          dic = [dic jk_dictionaryForKey:key];
+            if (!dic) {
+                break;
+            }
+        }
+    }
+    
+    return array;
+}
+
+- (nullable NSString *)jk_stringForKeyPath:(nonnull NSString *)keyPath
+{
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    NSDictionary *dic = self;
+    NSString *string = nil;
+    
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i == keys.count - 1) {
+          string = [dic jk_stringForKey:key];
+            if (!dic) {
+                break;
+            }
+        }else {
+          dic = [dic jk_dictionaryForKey:key];
+            if (!dic) {
+                break;
+            }
+        }
+    }
+    
+    return string;
+}
+
+- (nullable NSNumber *)jk_numberForKeyPath:(nonnull NSString *)keyPath
+{
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    NSDictionary *dic = self;
+    NSNumber *number = nil;
+    
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i == keys.count - 1) {
+          number = [dic jk_numberForKey:key];
+            if (!dic) {
+                break;
+            }
+        }else {
+          dic = [dic jk_dictionaryForKey:key];
+            if (!dic) {
+                break;
+            }
+        }
+    }
+    
+    return number;
+}
+
+- (NSInteger)jk_integerForKeyPath:(nonnull NSString *)keyPath
+{
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    NSDictionary *dic = self;
+    NSInteger value = 0;
+    
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i == keys.count - 1) {
+          value = [dic jk_integerForKey:key];
+            if (!dic) {
+                break;
+            }
+        }else {
+          dic = [dic jk_dictionaryForKey:key];
+            if (!dic) {
+                break;
+            }
+        }
+    }
+    
+    return value;
+}
+
+- (CGFloat)jk_cgFloatForKeyPath:(nonnull NSString *)keyPath
+{
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    NSDictionary *dic = self;
+    CGFloat value = 0;
+    
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i == keys.count - 1) {
+          value = [dic jk_cgFloatForKey:key];
+            if (!dic) {
+                break;
+            }
+        }else {
+          dic = [dic jk_dictionaryForKey:key];
+            if (!dic) {
+                break;
+            }
+        }
+    }
+    
+    return value;
+}
+
+- (float)jk_floatForKeyPath:(nonnull NSString *)keyPath
+{
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    NSDictionary *dic = self;
+    float value = 0;
+    
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        if (i == keys.count - 1) {
+          value = [dic jk_floatForKey:key];
+            if (!dic) {
+                break;
+            }
+        }else {
+          dic = [dic jk_dictionaryForKey:key];
+            if (!dic) {
+                break;
+            }
+        }
+    }
+    
+    return value;
+}
+
+- (double)jk_doubleForKeyPath:(nonnull NSString *)keyPath
+{
+   NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+   NSDictionary *dic = self;
+   double value = 0;
+   
+   for (NSInteger i = 0; i < keys.count; i++) {
+       NSString *key = keys[i];
+       if (i == keys.count - 1) {
+         value = [dic jk_doubleForKey:key];
+           if (!dic) {
+               break;
+           }
+       }else {
+         dic = [dic jk_dictionaryForKey:key];
+           if (!dic) {
+               break;
+           }
+       }
+   }
+   
+   return value;
+}
+
+- (BOOL)jk_boolForKeyPath:(nonnull NSString *)keyPath
+{
+  NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+  NSDictionary *dic = self;
+  BOOL value = NO;
+  
+  for (NSInteger i = 0; i < keys.count; i++) {
+      NSString *key = keys[i];
+      if (i == keys.count - 1) {
+        value = [dic jk_boolForKey:key];
+          if (!dic) {
+              break;
+          }
+      }else {
+        dic = [dic jk_dictionaryForKey:key];
+          if (!dic) {
+              break;
+          }
+      }
+  }
+  
+  return value;
+}
+
 @end

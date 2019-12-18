@@ -63,4 +63,28 @@
 
 - (CGRect)jk_rectForKey:(nonnull NSString *)key;
 
+-  (nullable NSDictionary *)jk_dictionaryForKeyPath:(nonnull NSString *)keyPath;
+
+- (nullable NSArray *)jk_arrayForKeyPath:(nonnull NSString *)keyPath;
+
+- (nullable NSString *)jk_stringForKeyPath:(nonnull NSString *)keyPath;
+
+- (nullable NSNumber *)jk_numberForKeyPath:(nonnull NSString *)keyPath;
+
+- (NSInteger)jk_integerForKeyPath:(nonnull NSString *)keyPath;
+
+/// 存在精度问题，可以通过限定位数，NSDecimalNumber 实现更高的精度
+/// @param keyPath keyPath
+- (CGFloat)jk_cgFloatForKeyPath:(nonnull NSString *)keyPath;
+
+/// 存在精度问题，可以通过限定位数，NSDecimalNumber 实现更高的精度
+/// @param keyPath keyPath
+- (float)jk_floatForKeyPath:(nonnull NSString *)keyPath;
+
+/// 存在精度问题，可以通过限定位数，NSDecimalNumber 实现更高的精度
+/// @param keyPath keyPath
+- (double)jk_doubleForKeyPath:(nonnull NSString *)keyPath;
+
+- (BOOL)jk_boolForKeyPath:(nonnull NSString *)keyPath;
+
 @end
