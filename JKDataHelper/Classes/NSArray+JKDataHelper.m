@@ -45,7 +45,7 @@
 {
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null] || [[value description] isEqualToString:@"<null>"] || [[value description] isEqualToString:@"(null)"])
+    if (value == nil || value == [NSNull null])
     {
         return nil;
     }

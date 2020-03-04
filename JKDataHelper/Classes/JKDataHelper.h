@@ -123,9 +123,6 @@ static inline BOOL jk_isEmptyStr(NSString * _Nullable str)
 #endif
         return YES; //类型不匹配是当做空字符串处理，要不然很危险
     }
-    if ([[str description] isEqualToString:@"<null>"] || [[str description] isEqualToString:@"(null)"]) {
-        return YES;
-    }
     
     if (str.length == 0) {
         return YES;
