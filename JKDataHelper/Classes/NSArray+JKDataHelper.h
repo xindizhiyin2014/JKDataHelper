@@ -54,12 +54,15 @@
                            dateFormat:(nonnull NSString *)dateFormat;
 
 /**
- 当前array的元素为NSDictionary类型
-
+ /// 获取数组元素中key对应的value的集合组成的数据，返回的数组内的元素是可以相同的
  @param key key
  @return key对应的value组成的数组
  */
 - (nonnull NSMutableArray *)jk_valueArrayWithKey:(nonnull NSString *)key;
+
+/// 获取数组元素中key对应的value的集合组成的数据，返回的数组内的元素是不相同
+/// @param key key
+- (nonnull NSArray *)jk_uniqueValuesWithKey:(nonnull NSString *)key;
 
 /**
  升序

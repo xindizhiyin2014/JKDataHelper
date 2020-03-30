@@ -290,19 +290,63 @@
     return nil;
 }
 
-- (nonnull NSMutableArray *)jk_valueArrayWithKey:(NSString *)key{
+- (nonnull NSMutableArray *)jk_valueArrayWithKey:(nonnull NSString *)key
+{
     if (!key) {
+#if DEBUG
         NSAssert(NO, @"key can not be nil");
+#endif
+        return nil;
     }
     NSMutableArray *values = [NSMutableArray new];
-    for (NSDictionary *dic in self) {
-        if (![dic isKindOfClass:[NSDictionary class]]) {
-           NSAssert(NO, @"value must be an instance of NSDictionary");
+    for (NSObject *obj in self) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)obj;
+            id value = [dic objectForKey:key];
+            if (value) {
+                [values addObject:value];
+            }
+        } else {
+            SEL selector = NSSelectorFromString(key);
+            if ([obj respondsToSelector:selector]) {
+                id value = [obj valueForKey:key];
+                if (value) {
+                    [values addObject:value];
+                }
+            }
         }
-        id value =  [dic objectForKey:key];
-        [values addObject:value];
     }
     return values;
+}
+
+- (nonnull NSArray *)jk_uniqueValuesWithKey:(nonnull NSString *)key
+{
+    if (!key) {
+#if DEBUG
+        NSAssert(NO, @"key can't be nil");
+#endif
+        return nil;
+    }
+    NSMutableSet *set = [NSMutableSet new];
+    for (NSObject *obj in self) {
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)obj;
+            id value = [dic objectForKey:key];
+            if (value) {
+                [set addObject:value];
+            }
+        } else {
+            SEL selector = NSSelectorFromString(key);
+            if ([obj respondsToSelector:selector]) {
+                id value = [obj valueForKey:key];
+                if (value) {
+                    [set addObject:value];
+                }
+            }
+        }
+        
+    }
+    return [set allObjects];
 }
 
 - (nonnull NSMutableArray *)jk_ascSort{
