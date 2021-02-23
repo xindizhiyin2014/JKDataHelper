@@ -1,0 +1,27 @@
+PODS:
+  - JKDataHelper_Swift (0.1.0)
+  - Nimble (8.0.9)
+  - Quick (2.2.1)
+
+DEPENDENCIES:
+  - JKDataHelper_Swift (from `../`)
+  - Nimble (~> 8.0.7)
+  - Quick (~> 2.2.0)
+
+SPEC REPOS:
+  trunk:
+    - Nimble
+    - Quick
+
+EXTERNAL SOURCES:
+  JKDataHelper_Swift:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JKDataHelper_Swift: 8f6f9f751c10cf402a5d52d3acd904909edffe47
+  Nimble: 98b888285a615fd34f20e61753cf58ea1402bde4
+  Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
+
+PODFILE CHECKSUM: 2b58a911a66564cb3eb25d4c18eab9ba1f741db9
+
+COCOAPODS: 1.10.0

@@ -1,0 +1,6 @@
+framework module JKDataHelper_Swift {
+  umbrella header "JKDataHelper_Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -26,6 +26,9 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		917274F86852F0A6127572AA /* Pods_JKDataHelper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF629A646517786563D63BA5 /* Pods_JKDataHelper_Example.framework */; };
+		BD58DAF425D2676100CFD50E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAF125D2676100CFD50E /* LICENSE */; };
+		BD58DAF525D2676100CFD50E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAF225D2676100CFD50E /* README.md */; };
+		BD58DAF625D2676100CFD50E /* JKDataHelper.podspec in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAF325D2676100CFD50E /* JKDataHelper.podspec */; };
 		E6455D29BF4E6D7DBCF922B3 /* Pods_JKDataHelper_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909010D59E963C80D8ACBC45 /* Pods_JKDataHelper_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +61,6 @@
 		04A7524A1E8BA52D00C3D611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04A7524D1E8E47F300C3D611 /* JKDataHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JKDataHelper.framework; path = "../../../Library/Developer/Xcode/DerivedData/JKDataHelper-cttgrfhjjbeyxibcmfprehqxqzgc/Build/Products/Debug-iphonesimulator/JKDataHelper/JKDataHelper.framework"; sourceTree = "<group>"; };
 		04E003301E664043003BA8A6 /* JKDataHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JKDataHelper.framework; path = "Pods/../build/Debug-iphoneos/JKDataHelper/JKDataHelper.framework"; sourceTree = "<group>"; };
-		1EF754A322C4EE1E7CAE39EA /* JKDataHelper.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JKDataHelper.podspec; path = ../JKDataHelper.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6003F58A195388D20070C39A /* JKDataHelper_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKDataHelper_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,11 +80,12 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		89E1C1085160883F68AAE17C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		909010D59E963C80D8ACBC45 /* Pods_JKDataHelper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKDataHelper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DAFE940CE1422663045971 /* Pods-JKDataHelper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKDataHelper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKDataHelper_Example/Pods-JKDataHelper_Example.release.xcconfig"; sourceTree = "<group>"; };
-		9EDF9834EE377E9D7DD6120A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		AEE0010DAB97B28E7FE6A3F6 /* Pods-JKDataHelper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKDataHelper_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKDataHelper_Tests/Pods-JKDataHelper_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		BD58DAF125D2676100CFD50E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
+		BD58DAF225D2676100CFD50E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		BD58DAF325D2676100CFD50E /* JKDataHelper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JKDataHelper.podspec; path = ../../JKDataHelper.podspec; sourceTree = "<group>"; };
 		D613930D4AB72569437E3032 /* Pods-JKDataHelper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKDataHelper_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKDataHelper_Example/Pods-JKDataHelper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DF629A646517786563D63BA5 /* Pods_JKDataHelper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKDataHelper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -200,9 +203,9 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				1EF754A322C4EE1E7CAE39EA /* JKDataHelper.podspec */,
-				9EDF9834EE377E9D7DD6120A /* README.md */,
-				89E1C1085160883F68AAE17C /* LICENSE */,
+				BD58DAF325D2676100CFD50E /* JKDataHelper.podspec */,
+				BD58DAF125D2676100CFD50E /* LICENSE */,
+				BD58DAF225D2676100CFD50E /* README.md */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -299,10 +303,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD58DAF525D2676100CFD50E /* README.md in Resources */,
 				04A7524B1E8BA52D00C3D611 /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				BD58DAF625D2676100CFD50E /* JKDataHelper.podspec in Resources */,
 				04A7524C1E8BA52D00C3D611 /* Main.storyboard in Resources */,
+				BD58DAF425D2676100CFD50E /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
