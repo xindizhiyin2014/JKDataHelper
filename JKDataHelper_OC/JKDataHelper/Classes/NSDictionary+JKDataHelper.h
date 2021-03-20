@@ -34,12 +34,6 @@
 
 - (BOOL)jk_boolForKey:(nonnull NSString *)key;
 
-- (int16_t)jk_int16ForKey:(nonnull NSString *)key;
-
-- (int32_t)jk_int32ForKey:(nonnull NSString *)key;
-
-- (int64_t)jk_int64ForKey:(nonnull NSString *)key;
-
 - (char)jk_charForKey:(nonnull NSString *)key;
 
 - (short)jk_shortForKey:(nonnull NSString *)key;

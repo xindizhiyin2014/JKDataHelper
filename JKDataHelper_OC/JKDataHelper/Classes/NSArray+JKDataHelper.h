@@ -34,12 +34,6 @@
 
 - (BOOL)jk_boolWithIndex:(NSInteger)index;
 
-- (int16_t)jk_int16WithIndex:(NSInteger)index;
-
-- (int32_t)jk_int32WithIndex:(NSInteger)index;
-
-- (int64_t)jk_int64WithIndex:(NSInteger)index;
-
 - (char)jk_charWithIndex:(NSInteger)index;
 
 - (short)jk_shortWithIndex:(NSInteger)index;
@@ -49,6 +43,10 @@
 - (CGFloat)jk_cgFloatWithIndex:(NSInteger)index;
 
 - (double)jk_doubleWithIndex:(NSInteger)index;
+
+- (long long)jk_longLongWithIndex:(NSInteger)index;
+
+- (unsigned long long)jk_unsignedLongLongWithIndex:(NSInteger)index;
 
 - (nullable NSDate *)jk_dateWithIndex:(NSInteger)index
                            dateFormat:(nonnull NSString *)dateFormat;

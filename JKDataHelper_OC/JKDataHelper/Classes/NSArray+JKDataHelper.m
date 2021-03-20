@@ -14,11 +14,17 @@
 {
     
     if (index < 0) {
+#if DEBUG
+        NSAssert(NO, @"index < 0!");
+#endif
         return nil;
     }
     if (index < self.count) {
         return self[index];
     }
+#if DEBUG
+    NSAssert(NO, @"index is out of bounds!");
+#endif
     return nil;
 }
 
@@ -38,6 +44,9 @@
     if ([object isKindOfClass: theClass]) {
         return object;
     }
+#if DEBUG
+    NSAssert(NO, @"data error!");
+#endif
     return nil;
 }
 
@@ -45,16 +54,12 @@
 {
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return nil;
-    }
     if ([value isKindOfClass:[NSString class]]) {
         return (NSString*)value;
     }
-    if ([value isKindOfClass:[NSNumber class]]) {
-        return [value stringValue];
-    }
+#if DEBUG
+    NSAssert(NO, @"value is not string");
+#endif
     return nil;
 }
 
@@ -64,11 +69,9 @@
     if ([value isKindOfClass:[NSNumber class]]) {
         return (NSNumber*)value;
     }
-    if ([value isKindOfClass:[NSString class]]) {
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        return [f numberFromString:(NSString*)value];
-    }
+#if DEBUG
+    NSAssert(NO, @"value is not a NSNumber");
+#endif
     return nil;
 }
 
@@ -86,72 +89,67 @@
         NSString * str = (NSString*)value;
         return [str isEqualToString:@""] ? nil : [NSDecimalNumber decimalNumberWithString:str];
     }
+#if DEBUG
+        NSAssert(NO, @"value is not a NSDecimalNumber");
+#endif
     return nil;
 }
 
 - (nullable NSArray*)jk_arrayWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return nil;
-    }
     if ([value isKindOfClass:[NSArray class]])
     {
         return value;
     }
+#if DEBUG
+    NSAssert(NO, @"value is not an array");
+#endif
     return nil;
 }
 
 - (nullable NSDictionary*)jk_dictionaryWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return nil;
-    }
     if ([value isKindOfClass:[NSDictionary class]])
     {
         return value;
     }
+#if DEBUG
+    NSAssert(NO, @"value is not a NSDictionary");
+#endif
     return nil;
 }
 
 - (NSInteger)jk_integerWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
     if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]])
     {
         return [value integerValue];
     }
+#if DEBUG
+    NSAssert(NO, @"can't get intergeValue");
+#endif
     return 0;
 }
 
 - (NSUInteger)jk_unsignedIntegerWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
     if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]])
     {
         return [value unsignedIntegerValue];
     }
+#if DEBUG
+    NSAssert(NO, @"can't get unsignedIntegerValue");
+#endif
     return 0;
 }
 
 - (BOOL)jk_boolWithIndex:(NSInteger)index
 {
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return NO;
-    }
     if ([value isKindOfClass:[NSNumber class]])
     {
         return [value boolValue];
@@ -160,97 +158,51 @@
     {
         return [value boolValue];
     }
+#if DEBUG
+    NSAssert(NO, @"can't get boolValue");
+#endif
     return NO;
-}
-
-- (int16_t)jk_int16WithIndex:(NSInteger)index
-{
-    id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
-    if ([value isKindOfClass:[NSNumber class]])
-    {
-        return [value shortValue];
-    }
-    if ([value isKindOfClass:[NSString class]])
-    {
-        return [value intValue];
-    }
-    return 0;
-}
-
-- (int32_t)jk_int32WithIndex:(NSInteger)index
-{
-    id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
-    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
-    {
-        return [value intValue];
-    }
-    return 0;
-}
-
-- (int64_t)jk_int64WithIndex:(NSInteger)index
-{
-    id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
-    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
-    {
-        return [value longLongValue];
-    }
-    return 0;
 }
 
 - (char)jk_charWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
     if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
     {
         return [value charValue];
     }
+#if DEBUG
+    NSAssert(NO, @"can't get charValue");
+#endif
     return 0;
 }
 
 - (short)jk_shortWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
     if ([value isKindOfClass:[NSNumber class]])
     {
         return [value shortValue];
     }
     if ([value isKindOfClass:[NSString class]])
     {
-        return [value intValue];
+        return [value shortValue];
     }
+#if DEBUG
+    NSAssert(NO, @"can't get shortValue");
+#endif
     return 0;
 }
 - (float)jk_floatWithIndex:(NSInteger)index{
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
     if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
     {
         return [value floatValue];
     }
+#if DEBUG
+    NSAssert(NO, @"can't get floatValue");
+#endif
     return 0;
 }
 
@@ -262,15 +214,37 @@
 - (double)jk_doubleWithIndex:(NSInteger)index
 {
     id value = [self jk_objectWithIndex:index];
-    
-    if (value == nil || value == [NSNull null])
-    {
-        return 0;
-    }
     if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
     {
         return [value doubleValue];
     }
+#if DEBUG
+    NSAssert(NO, @"can't get doubleValue");
+#endif
+    return 0;
+}
+
+- (long long)jk_longLongWithIndex:(NSInteger)index
+{
+    id value = [self jk_objectWithIndex:index];
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
+        return [value longLongValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get longLongValue");
+#endif
+    return 0;
+}
+
+- (unsigned long long)jk_unsignedLongLongWithIndex:(NSInteger)index
+{
+    id value = [self jk_objectWithIndex:index];
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
+        return [value unsignedLongLongValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get unsignedLongLongValue");
+#endif
     return 0;
 }
 
@@ -278,15 +252,14 @@
                            dateFormat:(nonnull NSString *)dateFormat {
     
     id value = [self jk_objectWithIndex:index];
-    if (value == nil || value == [NSNull null])
-    {
-        return nil;
-    }
     if ([value isKindOfClass:[NSString class]] && ![value isEqualToString:@""] && !dateFormat) {
         NSDateFormatter *formater = [[NSDateFormatter alloc]init];
         formater.dateFormat = dateFormat;
         return [formater dateFromString:value];
     }
+#if DEBUG
+    NSAssert(NO, @"can't convert to NSDate");
+#endif
     return nil;
 }
 
@@ -349,7 +322,8 @@
     return [set allObjects];
 }
 
-- (nonnull NSMutableArray *)jk_ascSort{
+- (nonnull NSMutableArray *)jk_ascSort
+{
     NSMutableArray *array = (NSMutableArray *)self;
     if (![self isKindOfClass:[NSMutableArray class]]) {
         array = [NSMutableArray arrayWithArray:self];
@@ -360,7 +334,8 @@
     return array;
 }
 
-- (nonnull NSMutableArray *)jk_descSort{
+- (nonnull NSMutableArray *)jk_descSort
+{
     NSMutableArray *array = (NSMutableArray *)self;
     if (![self isKindOfClass:[NSMutableArray class]]) {
         array = [NSMutableArray arrayWithArray:self];
@@ -371,22 +346,23 @@
     return array;
 }
 
-- (CGPoint)jk_pointWithIndex:(NSInteger)index{
-    
+- (CGPoint)jk_pointWithIndex:(NSInteger)index
+{
     id value = [self jk_objectWithIndex:index];
     CGPoint point = CGPointFromString(value);
     return point;
 }
 
-- (CGSize)jk_sizeWithIndex:(NSInteger)index{
+- (CGSize)jk_sizeWithIndex:(NSInteger)index
+{
     
     id value = [self jk_objectWithIndex:index];
     CGSize size = CGSizeFromString(value);
     return size;
 }
 
-- (CGRect)jk_rectWithIndex:(NSInteger)index{
-    
+- (CGRect)jk_rectWithIndex:(NSInteger)index
+{
     id value = [self jk_objectWithIndex:index];
     CGRect rect = CGRectFromString(value);
     return rect;
