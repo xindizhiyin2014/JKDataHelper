@@ -96,7 +96,8 @@
 		B71070160CF07EFA99ED0445B0D191E7 /* Nimble-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DD31140F6CF34B81536308FA3E2338 /* Nimble-dummy.m */; };
 		B7662703AF8D3FFFCB0070C50FEDCC58 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44CD33E71326E3768804E73E6C75EB /* Errors.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B79FC6E46F642C3FC74B3E6D9175B1AB /* SatisfyAllOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3DB08ED09D298DA83102EB4BAAE54D /* SatisfyAllOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		BD58DAFA25D267F000CFD50E /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58DAF925D267F000CFD50E /* ArrayExtension.swift */; };
+		BD153EB42605CC3C00696211 /* JKDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD153EB32605CC3C00696211 /* JKDictionaryExtension.swift */; };
+		BD58DAFA25D267F000CFD50E /* JKArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58DAF925D267F000CFD50E /* JKArrayExtension.swift */; };
 		BE56C54CD29F23A1C631645390E8569D /* ErrorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330449905CBD0256B295240608C83E2E /* ErrorUtility.swift */; };
 		BFEBC90223F66B0FF770B92B1C670BCF /* QuickConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = D92C57D471EE3A427AB823E625B39311 /* QuickConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C051C0411627BD5FCDA031782EB1F716 /* DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = DD94E448E7BD07EB326E452082EEC7E1 /* DSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -267,9 +268,10 @@
 		B95D4706E6510E2870F2176D49F24BDA /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
 		BA3DB08ED09D298DA83102EB4BAAE54D /* SatisfyAllOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAllOf.swift; path = Sources/Nimble/Matchers/SatisfyAllOf.swift; sourceTree = "<group>"; };
 		BAE263041362D074978BB3B577DF0A05 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD153EB32605CC3C00696211 /* JKDictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JKDictionaryExtension.swift; path = JKDataHelper_Swift/Classes/JKDictionaryExtension.swift; sourceTree = "<group>"; };
 		BD1BF7A6A240D39BCDD16B3A9B1C3D27 /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
 		BD23155F5982EE27DCE590A2EC25F892 /* JKDataHelper_Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JKDataHelper_Swift-umbrella.h"; sourceTree = "<group>"; };
-		BD58DAF925D267F000CFD50E /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = JKDataHelper_Swift/Classes/ArrayExtension.swift; sourceTree = "<group>"; };
+		BD58DAF925D267F000CFD50E /* JKArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JKArrayExtension.swift; path = JKDataHelper_Swift/Classes/JKArrayExtension.swift; sourceTree = "<group>"; };
 		C0141526DC69D1961DD345A499664266 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
 		C4294C7E6F87986A517F578995A15A8F /* Pods-JKDataHelper_Swift_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JKDataHelper_Swift_Example-dummy.m"; sourceTree = "<group>"; };
 		C4E5A3821E43C3BCCB53CC6F367AC0A7 /* Pods-JKDataHelper_Swift_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JKDataHelper_Swift_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -639,7 +641,8 @@
 			children = (
 				D5CFD16C03535C356702392ADA28708B /* Pod */,
 				1D48818B524E01C4F9DEC73B183DE367 /* Support Files */,
-				BD58DAF925D267F000CFD50E /* ArrayExtension.swift */,
+				BD58DAF925D267F000CFD50E /* JKArrayExtension.swift */,
+				BD153EB32605CC3C00696211 /* JKDictionaryExtension.swift */,
 			);
 			name = JKDataHelper_Swift;
 			path = ../..;
@@ -877,8 +880,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD153EB42605CC3C00696211 /* JKDictionaryExtension.swift in Sources */,
 				A6D992530818873E1532C523196A87E0 /* JKDataHelper_Swift-dummy.m in Sources */,
-				BD58DAFA25D267F000CFD50E /* ArrayExtension.swift in Sources */,
+				BD58DAFA25D267F000CFD50E /* JKArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
