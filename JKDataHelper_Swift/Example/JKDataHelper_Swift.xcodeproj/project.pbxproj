@@ -49,7 +49,7 @@
 		74F02D62B100298C6B9A3406 /* Pods-JKDataHelper_Swift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKDataHelper_Swift_Tests.release.xcconfig"; path = "Target Support Files/Pods-JKDataHelper_Swift_Tests/Pods-JKDataHelper_Swift_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BD58DAE225D2657200CFD50E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
 		BD58DAE325D2657200CFD50E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		BD58DAE825D2659D00CFD50E /* JKDataHelper_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JKDataHelper_Swift.podspec; path = ../../JKDataHelper_Swift.podspec; sourceTree = "<group>"; };
+		BD58DAE825D2659D00CFD50E /* JKDataHelper_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JKDataHelper_Swift.podspec; path = ../../JKDataHelper_Swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

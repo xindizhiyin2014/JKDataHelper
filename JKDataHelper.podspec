@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKDataHelper'
-  s.version          = '0.1.23'
-  s.summary          = 'this is a tool alalways to help developer to avoid bugs by the unstable APIs..'
+  s.version          = '0.1.24'
+  s.summary          = 'this is a tool to help developer to avoid bugs or crashes by the unstable APIs..,and cause assert in debug evnvironment.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-this is a tool alalways to help developer to avoid bugs by the unstable APIs.and it will update with demands
+  this is a tool to help developer to avoid bugs or crashes by the unstable APIs..,and cause assert in debug evnvironment. and it will update with demands
                        DESC
 
   s.homepage         = 'https://github.com/xindizhiyin2014/JKDataHelper'
@@ -30,7 +30,7 @@ this is a tool alalways to help developer to avoid bugs by the unstable APIs.and
 
   s.ios.deployment_target = '7.0'
 
-  s.source_files = 'JKDataHelper/Classes/**/*'
+  s.source_files = 'JKDataHelper_OC/JKDataHelper/Classes/**/*'
   
   # s.resource_bundles = {
   #   'JKDataHelper' => ['JKDataHelper/Assets/*.png']

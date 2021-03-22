@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKDataHelper_Swift'
-  s.version          = '0.1.0'
+  s.version          = '0.1.24'
   s.summary          = 'A short description of JKDataHelper_Swift.'
 
 # This description is used to generate tags and improve search results.
@@ -21,16 +21,16 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/xindizhiyin2014/JKDataHelper_Swift'
+  s.homepage         = 'https://github.com/xindizhiyin2014/JKDataHelper'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'xindizhiyin2014' => 'hlhan@vova.com.hk' }
-  s.source           = { :git => 'https://github.com/xindizhiyin2014/JKDataHelper_Swift.git', :tag => s.version.to_s }
+  s.author           = { 'xindizhiyin2014' => '929097264@qq.com' }
+  s.source           = { :git => 'https://github.com/xindizhiyin2014/JKDataHelper.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
 
-  s.source_files = 'JKDataHelper_Swift/Classes/**/*'
+  s.source_files = 'JKDataHelper_Swift/JKDataHelper_Swift/Classes/**/*'
   
   # s.resource_bundles = {
   #   'JKDataHelper_Swift' => ['JKDataHelper_Swift/Assets/*.png']
