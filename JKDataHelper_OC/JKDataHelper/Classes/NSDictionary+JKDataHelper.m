@@ -22,24 +22,57 @@
     return [self objectForKey:key] != nil;
 }
 
-- (nullable id)jk_objectForKey:(nullable NSString *)key
-                           verifyClass:(nullable Class)theClass
+- (nullable id)jk_objectForKey:(NSString *)key
 {
-    id value = [self objectForKey:key];
+    if (!key) {
+#if DEBUG
+        NSAssert(NO, @"key can't be nil");
+#endif
+        return nil;
+    }
+    return self[key];
+}
+
+- (nullable id)jk_objectForKeyPath:(NSString *)keyPath
+{
+    if (!keyPath) {
+#if DEBUG
+        NSAssert(NO, @"keyPath can't be nil");
+#endif
+        return  nil;
+    }
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    id result = nil;
+    id obj = self;
+    for (NSInteger i = 0; i < keys.count; i++) {
+        NSString *key = keys[i];
+        obj = [obj jk_objectForKey:key];
+        if ((i < keys.count - 1)
+            && (![obj isKindOfClass:[NSDictionary class]])) {
+#if DEBUG
+            NSAssert(NO, @"obj is not a Dictionary");
+#endif
+            result = nil;
+            break;
+        }
+        result = obj;
+    }
+    return result;
+}
+
+- (nullable id)jk_objectForKey:(NSString *)key
+                           verifyClass:(Class)theClass
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null]){
         return nil;
     }
     if (!theClass) {
-        return value;
-    }
-
-    if (![theClass isSubclassOfClass:[NSObject class]]) {
 #if DEBUG
-        NSAssert(NO, @"theClass must be subClass of NSObject");
+        NSAssert(NO, @"theClass can't be nil");
 #endif
         return nil;
     }
-        
     if ([value isKindOfClass:theClass]) {
         return value;
     }
@@ -49,9 +82,31 @@
     return nil;
 }
 
-- (nullable NSString*)jk_stringForKey:(nonnull NSString *)key
+- (nullable id)jk_objectForKeyPath:(NSString *)keyPath
+                               verifyClass:(Class)theClass
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null]){
+        return nil;
+    }
+    if (!theClass) {
+#if DEBUG
+        NSAssert(NO, @"theClass can't be nil");
+#endif
+        return nil;
+    }
+    if ([value isKindOfClass:theClass]) {
+        return value;
+    }
+#if DEBUG
+    NSAssert(NO, @"value is not the targetClass");
+#endif
+    return nil;
+}
+
+- (nullable NSString*)jk_stringForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null]){
         return nil;
     }
@@ -64,9 +119,24 @@
     return nil;
 }
 
-- (nullable NSNumber*)jk_numberForKey:(nonnull NSString *)key
+- (nullable NSString *)jk_stringForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null]){
+        return nil;
+    }
+    if ([value isKindOfClass:[NSString class]]) {
+        return (NSString*)value;
+    }
+#if DEBUG
+    NSAssert(NO, @"value is not a string");
+#endif
+    return nil;
+}
+
+- (nullable NSNumber*)jk_numberForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null]){
         return nil;
     }
@@ -84,9 +154,29 @@
     return nil;
 }
 
-- (nullable NSDecimalNumber *)jk_decimalNumberForKey:(nonnull NSString *)key
+- (nullable NSNumber*)jk_numberForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null]){
+        return nil;
+    }
+    if ([value isKindOfClass:[NSNumber class]]) {
+        return (NSNumber*)value;
+    }
+    if ([value isKindOfClass:[NSString class]]) {
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        return [f numberFromString:(NSString*)value];
+    }
+#if DEBUG
+    NSAssert(NO, @"value is not a NSNumber");
+#endif
+    return nil;
+}
+
+- (nullable NSDecimalNumber *)jk_decimalNumberForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null]){
         return nil;
     }
@@ -105,9 +195,30 @@
     return nil;
 }
 
-- (nullable NSArray*)jk_arrayForKey:(nonnull NSString *)key
+- (nullable NSDecimalNumber *)jk_decimalNumberForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null]){
+        return nil;
+    }
+    if ([value isKindOfClass:[NSDecimalNumber class]]) {
+        return value;
+    } else if ([value isKindOfClass:[NSNumber class]]) {
+        NSNumber *number = (NSNumber*)value;
+        return [NSDecimalNumber decimalNumberWithDecimal:[number decimalValue]];
+    } else if ([value isKindOfClass:[NSString class]]) {
+        NSString *str = (NSString*)value;
+        return [str isEqualToString:@""] ? nil : [NSDecimalNumber decimalNumberWithString:str];
+    }
+#if DEBUG
+    NSAssert(NO, @"value is not a NSDecimalNumber");
+#endif
+    return nil;
+}
+
+- (nullable NSArray*)jk_arrayForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return nil;
@@ -122,9 +233,26 @@
     return nil;
 }
 
-- (nullable NSDictionary*)jk_dictionaryForKey:(nonnull NSString *)key
+- (nullable NSArray*)jk_arrayForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSArray class]])
+    {
+        return value;
+    }
+#if DEBUG
+    NSAssert(NO, @"value is not an NSArray");
+#endif
+    return nil;
+}
+
+- (nullable NSDictionary*)jk_dictionaryForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return nil;
@@ -139,9 +267,26 @@
     return nil;
 }
 
-- (NSInteger)jk_integerForKey:(nonnull NSString *)key
+- (nullable NSDictionary*)jk_dictionaryForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSDictionary class]])
+    {
+        return value;
+    }
+#if DEBUG
+    NSAssert(NO, @"value is not a NSDictionary");
+#endif
+    return nil;
+}
+
+- (NSInteger)jk_integerForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -155,9 +300,27 @@
 #endif
     return 0;
 }
-- (NSUInteger)jk_unsignedIntegerForKey:(nonnull NSString *)key
+
+- (NSInteger)jk_integerForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]])
+    {
+        return [value integerValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get integerValue");
+#endif
+    return 0;
+}
+
+- (NSUInteger)jk_unsignedIntegerForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -172,9 +335,26 @@
     return 0;
 }
 
-- (BOOL)jk_boolForKey:(nonnull NSString *)key
+- (NSUInteger)jk_unsignedIntegerForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]])
+    {
+        return [value unsignedIntegerValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get unsignedIntegerValue");
+#endif
+    return 0;
+}
+
+- (BOOL)jk_boolForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return NO;
@@ -193,9 +373,30 @@
     return NO;
 }
 
-- (char)jk_charForKey:(nonnull NSString *)key
+- (BOOL)jk_boolForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return NO;
+    }
+    if ([value isKindOfClass:[NSNumber class]])
+    {
+        return [value boolValue];
+    }
+    if ([value isKindOfClass:[NSString class]])
+    {
+        return [value boolValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get boolValue");
+#endif
+    return NO;
+}
+
+- (char)jk_charForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -210,10 +411,26 @@
     return 0;
 }
 
-- (short)jk_shortForKey:(nonnull NSString *)key
+- (char)jk_charForKeyPath:(NSString *)keyPath
 {
-    
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSString class]])
+    {
+        return [value charValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get charValue");
+#endif
+    return 0;
+}
+
+- (short)jk_shortForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -232,10 +449,30 @@
     return 0;
 }
 
-- (float)jk_floatForKey:(nonnull NSString *)key
+- (short)jk_shortForKeyPath:(NSString *)keyPath
 {
-    
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSNumber class]])
+    {
+        return [value shortValue];
+    }
+    if ([value isKindOfClass:[NSString class]])
+    {
+        return [value shortValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get shortValue");
+#endif
+    return 0;
+}
+
+- (float)jk_floatForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -250,15 +487,39 @@
     return 0;
 }
 
-- (CGFloat)jk_cgFloatForKey:(nonnull NSString *)key
+- (float)jk_floatForKeyPath:(NSString *)keyPath
+{
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
+    {
+        return [value floatValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get floatValue");
+#endif
+    return 0;
+}
+
+- (CGFloat)jk_cgFloatForKey:(NSString *)key
 {
     CGFloat value = (CGFloat)[self jk_floatForKey:key];
     return value;
 }
 
-- (double)jk_doubleForKey:(nonnull NSString *)key
+- (CGFloat)jk_cgFloatForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    CGFloat value = (CGFloat)[self jk_floatForKeyPath:keyPath];
+    return value;
+}
+
+
+- (double)jk_doubleForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -273,9 +534,26 @@
     return 0;
 }
 
-- (long long)jk_longLongForKey:(nonnull NSString *)key
+- (double)jk_doubleForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]])
+    {
+        return [value doubleValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get doubleValue");
+#endif
+    return 0;
+}
+
+- (long long)jk_longLongForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -289,9 +567,25 @@
     return 0;
 }
 
-- (unsigned long long)jk_unsignedLongLongForKey:(nonnull NSString *)key
+- (long long)jk_longLongForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
+        return [value longLongValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get longlongValue");
+#endif
+    return 0;
+}
+
+- (unsigned long long)jk_unsignedLongLongForKey:(NSString *)key
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return 0;
@@ -305,15 +599,33 @@
     return 0;
 }
 
-- (nullable NSDate *)jk_dateForKey:(nonnull NSString *)key
-               dateFormat:(nonnull NSString *)dateFormat
+- (unsigned long long)jk_unsignedLongLongForKeyPath:(NSString *)keyPath
 {
-    id value = [self objectForKey:key];
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
+        return [value unsignedLongLongValue];
+    }
+#if DEBUG
+    NSAssert(NO, @"can't get unsignedLongLongValue");
+#endif
+    return 0;
+}
+
+- (nullable NSDate *)jk_dateForKey:(NSString *)key
+                        dateFormat:(NSString *)dateFormat
+{
+    id value = [self jk_objectForKey:key];
     if (value == nil || value == [NSNull null])
     {
         return nil;
     }
-    if ([value isKindOfClass:[NSString class]] && ![value isEqualToString:@""] && !dateFormat) {
+    if ([value isKindOfClass:[NSString class]]
+        && ![value isEqualToString:@""]
+        && !dateFormat) {
         NSDateFormatter *formater = [[NSDateFormatter alloc]init];
         formater.dateFormat = dateFormat;
         return [formater dateFromString:value];
@@ -324,220 +636,103 @@
     return nil;
 }
 
-- (CGPoint)jk_pointForKey:(nonnull NSString *)key
+- (nullable NSDate *)jk_dateForKeyPath:(NSString *)keyPath
+                            dateFormat:(NSString *)dateFormat
 {
-    CGPoint point = CGPointFromString([self objectForKey:key]);
-    return point;
-}
-
-- (CGSize)jk_sizeForKey:(nonnull NSString *)key{
-    
-    CGSize size = CGSizeFromString([self objectForKey:key]);
-    return size;
-}
-
-- (CGRect)jk_rectForKey:(nonnull NSString *)key
-{
-    
-    CGRect rect = CGRectFromString([self objectForKey:key]);
-    return rect;
-}
-
--  (nullable NSDictionary *)jk_dictionaryForKeyPath:(nonnull NSString *)keyPath
-{
-    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-    NSDictionary *dic = self;
-    for (NSInteger i = 0; i < keys.count; i++) {
-        NSString *key = keys[i];
-        dic = [dic jk_dictionaryForKey:key];
-        if (!dic) {
-            break;
-        }
+    id value = [self jk_objectForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+        return nil;
     }
-    return dic;
-}
-
-- (nullable NSArray *)jk_arrayForKeyPath:(nonnull NSString *)keyPath
-{
-    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-    NSDictionary *dic = self;
-    NSArray *array = nil;
-    for (NSInteger i = 0; i < keys.count; i++) {
-        NSString *key = keys[i];
-        if (i == keys.count - 1) {
-          array = [dic jk_arrayForKey:key];
-            if (!dic) {
-                break;
-            }
-        }else {
-          dic = [dic jk_dictionaryForKey:key];
-            if (!dic) {
-                break;
-            }
-        }
+    if ([value isKindOfClass:[NSString class]]
+        && ![value isEqualToString:@""]
+        && !dateFormat) {
+        NSDateFormatter *formater = [[NSDateFormatter alloc]init];
+        formater.dateFormat = dateFormat;
+        return [formater dateFromString:value];
     }
-    return array;
+#if DEBUG
+    NSAssert(NO, @"can't get a NSDate");
+#endif
+    return nil;
 }
 
-- (nullable NSString *)jk_stringForKeyPath:(nonnull NSString *)keyPath
+- (CGPoint)jk_pointForKey:(NSString *)key
 {
-    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-    NSDictionary *dic = self;
-    NSString *string = nil;
-    
-    for (NSInteger i = 0; i < keys.count; i++) {
-        NSString *key = keys[i];
-        if (i == keys.count - 1) {
-          string = [dic jk_stringForKey:key];
-            if (!dic) {
-                break;
-            }
-        }else {
-          dic = [dic jk_dictionaryForKey:key];
-            if (!dic) {
-                break;
-            }
-        }
+    id value = [self jk_stringForKey:key];
+    if (value == nil || value == [NSNull null])
+    {
+#if DEBUG
+        NSAssert(NO, @"value is nil");
+#endif
+        return CGPointZero;
     }
-    return string;
+    return CGPointFromString(value);
 }
 
-- (nullable NSNumber *)jk_numberForKeyPath:(nonnull NSString *)keyPath
+- (CGPoint)jk_pointForKeyPath:(NSString *)keyPath
 {
-    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-    NSDictionary *dic = self;
-    NSNumber *number = nil;
-    
-    for (NSInteger i = 0; i < keys.count; i++) {
-        NSString *key = keys[i];
-        if (i == keys.count - 1) {
-          number = [dic jk_numberForKey:key];
-            if (!dic) {
-                break;
-            }
-        }else {
-          dic = [dic jk_dictionaryForKey:key];
-            if (!dic) {
-                break;
-            }
-        }
+    id value = [self jk_stringForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+#if DEBUG
+        NSAssert(NO, @"value is nil");
+#endif
+        return CGPointZero;
     }
-    return number;
+    return CGPointFromString(value);
 }
 
-- (NSInteger)jk_integerForKeyPath:(nonnull NSString *)keyPath
+- (CGSize)jk_sizeForKey:(NSString *)key
 {
-    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-    NSDictionary *dic = self;
-    NSInteger value = 0;
-    
-    for (NSInteger i = 0; i < keys.count; i++) {
-        NSString *key = keys[i];
-        if (i == keys.count - 1) {
-          value = [dic jk_integerForKey:key];
-            if (!dic) {
-                break;
-            }
-        }else {
-          dic = [dic jk_dictionaryForKey:key];
-            if (!dic) {
-                break;
-            }
-        }
+    id value = [self jk_stringForKey:key];
+    if (value == nil || value == [NSNull null])
+    {
+#if DEBUG
+        NSAssert(NO, @"value is nil");
+#endif
+        return CGSizeZero;
     }
-    return value;
+    return CGSizeFromString(value);
 }
 
-- (CGFloat)jk_cgFloatForKeyPath:(nonnull NSString *)keyPath
+- (CGSize)jk_sizeForKeyPath:(NSString *)keyPath
 {
-    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-    NSDictionary *dic = self;
-    CGFloat value = 0;
-    
-    for (NSInteger i = 0; i < keys.count; i++) {
-        NSString *key = keys[i];
-        if (i == keys.count - 1) {
-          value = [dic jk_cgFloatForKey:key];
-            if (!dic) {
-                break;
-            }
-        }else {
-          dic = [dic jk_dictionaryForKey:key];
-            if (!dic) {
-                break;
-            }
-        }
+    id value = [self jk_stringForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+#if DEBUG
+        NSAssert(NO, @"value is nil");
+#endif
+        return CGSizeZero;
     }
-    return value;
+    return CGSizeFromString(value);
 }
 
-- (float)jk_floatForKeyPath:(nonnull NSString *)keyPath
+- (CGRect)jk_rectForKey:(NSString *)key
 {
-    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-    NSDictionary *dic = self;
-    float value = 0;
-    
-    for (NSInteger i = 0; i < keys.count; i++) {
-        NSString *key = keys[i];
-        if (i == keys.count - 1) {
-          value = [dic jk_floatForKey:key];
-            if (!dic) {
-                break;
-            }
-        }else {
-          dic = [dic jk_dictionaryForKey:key];
-            if (!dic) {
-                break;
-            }
-        }
+    id value = [self jk_stringForKey:key];
+    if (value == nil || value == [NSNull null])
+    {
+#if DEBUG
+        NSAssert(NO, @"value is nil");
+#endif
+        return CGRectZero;
     }
-    return value;
+    return CGRectFromString(value);
 }
 
-- (double)jk_doubleForKeyPath:(nonnull NSString *)keyPath
+- (CGRect)jk_rectForKeyPath:(NSString *)keyPath
 {
-   NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-   NSDictionary *dic = self;
-   double value = 0;
-   
-   for (NSInteger i = 0; i < keys.count; i++) {
-       NSString *key = keys[i];
-       if (i == keys.count - 1) {
-         value = [dic jk_doubleForKey:key];
-           if (!dic) {
-               break;
-           }
-       }else {
-         dic = [dic jk_dictionaryForKey:key];
-           if (!dic) {
-               break;
-           }
-       }
-   }
-   return value;
-}
-
-- (BOOL)jk_boolForKeyPath:(nonnull NSString *)keyPath
-{
-  NSArray *keys = [keyPath componentsSeparatedByString:@"."];
-  NSDictionary *dic = self;
-  BOOL value = NO;
-  
-  for (NSInteger i = 0; i < keys.count; i++) {
-      NSString *key = keys[i];
-      if (i == keys.count - 1) {
-        value = [dic jk_boolForKey:key];
-          if (!dic) {
-              break;
-          }
-      }else {
-        dic = [dic jk_dictionaryForKey:key];
-          if (!dic) {
-              break;
-          }
-      }
-  }
-  return value;
+    id value = [self jk_stringForKeyPath:keyPath];
+    if (value == nil || value == [NSNull null])
+    {
+#if DEBUG
+        NSAssert(NO, @"value is nil");
+#endif
+        return CGRectZero;
+    }
+    return CGRectFromString(value);
 }
 
 @end

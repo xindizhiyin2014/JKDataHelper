@@ -8,77 +8,105 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSDictionary<__covariant KeyType, __covariant ObjectType> (JKDataHelper)
 
-- (BOOL)jk_hasKey:(nullable NSString *)key;
+- (BOOL)jk_hasKey:(NSString *)key;
+
+- (nullable id)jk_objectForKey:(NSString *)key;
+
+- (nullable id)jk_objectForKeyPath:(NSString *)keyPath;
 
 /// 根据key获取元素值，并对元素类型进行判断
 /// @param key key
 /// @param theClass 进行判定的类
-- (nullable ObjectType)jk_objectForKey:(nullable NSString *)key
-                          verifyClass:(nullable Class)theClass;
+- (nullable ObjectType)jk_objectForKey:(NSString *)key
+                          verifyClass:(Class)theClass;
 
-- (nullable NSString*)jk_stringForKey:(nonnull NSString *)key;
+- (nullable ObjectType)jk_objectForKeyPath:(NSString *)keyPath
+                               verifyClass:(Class)theClass;
 
-- (nullable NSNumber*)jk_numberForKey:(nonnull NSString *)key;
+- (nullable NSString*)jk_stringForKey:(NSString *)key;
 
-- (nullable NSDecimalNumber *)jk_decimalNumberForKey:(nonnull NSString *)key;
+- (nullable NSString *)jk_stringForKeyPath:(NSString *)keyPath;
 
-- (nullable NSArray*)jk_arrayForKey:(nonnull NSString *)key;
+- (nullable NSNumber*)jk_numberForKey:(NSString *)key;
 
-- (nullable NSDictionary*)jk_dictionaryForKey:(nonnull NSString *)key;
+- (nullable NSNumber *)jk_numberForKeyPath:(NSString *)keyPath;
 
-- (NSInteger)jk_integerForKey:(nonnull NSString *)key;
+- (nullable NSDecimalNumber *)jk_decimalNumberForKey:(NSString *)key;
 
-- (NSUInteger)jk_unsignedIntegerForKey:(nonnull NSString *)key;
+- (nullable NSDecimalNumber *)jk_decimalNumberForKeyPath:(NSString *)keyPath;
 
-- (BOOL)jk_boolForKey:(nonnull NSString *)key;
+- (nullable NSArray*)jk_arrayForKey:(NSString *)key;
 
-- (char)jk_charForKey:(nonnull NSString *)key;
+- (nullable NSArray*)jk_arrayForKeyPath:(NSString *)keyPath;
 
-- (short)jk_shortForKey:(nonnull NSString *)key;
+- (nullable NSDictionary*)jk_dictionaryForKey:(NSString *)key;
 
-- (float)jk_floatForKey:(nonnull NSString *)key;
+- (nullable NSDictionary*)jk_dictionaryForKeyPath:(NSString *)keyPath;
 
-- (CGFloat)jk_cgFloatForKey:(nonnull NSString *)key;
+- (NSInteger)jk_integerForKey:(NSString *)key;
 
-- (double)jk_doubleForKey:(nonnull NSString *)key;
+- (NSInteger)jk_integerForKeyPath:(NSString *)keyPath;
 
-- (long long)jk_longLongForKey:(nonnull NSString *)key;
+- (NSUInteger)jk_unsignedIntegerForKey:(NSString *)key;
 
-- (unsigned long long)jk_unsignedLongLongForKey:(nonnull NSString *)key;
+- (NSUInteger)jk_unsignedIntegerForKeyPath:(NSString *)keyPath;
 
-- (nullable NSDate *)jk_dateForKey:(nonnull NSString *)key
-                        dateFormat:(nonnull NSString *)dateFormat;
+- (BOOL)jk_boolForKey:(NSString *)key;
 
-- (CGPoint)jk_pointForKey:(nonnull NSString *)key;
+- (BOOL)jk_boolForKeyPath:(NSString *)keyPath;
 
-- (CGSize)jk_sizeForKey:(nonnull NSString *)key;
+- (char)jk_charForKey:(NSString *)key;
 
-- (CGRect)jk_rectForKey:(nonnull NSString *)key;
+- (char)jk_charForKeyPath:(NSString *)keyPath;
 
--  (nullable NSDictionary *)jk_dictionaryForKeyPath:(nonnull NSString *)keyPath;
+- (short)jk_shortForKey:(NSString *)key;
 
-- (nullable NSArray *)jk_arrayForKeyPath:(nonnull NSString *)keyPath;
+- (short)jk_shortForKeyPath:(NSString *)keyPath;
 
-- (nullable NSString *)jk_stringForKeyPath:(nonnull NSString *)keyPath;
+- (float)jk_floatForKey:(NSString *)key;
 
-- (nullable NSNumber *)jk_numberForKeyPath:(nonnull NSString *)keyPath;
+- (float)jk_floatForKeyPath:(NSString *)keyPath;
 
-- (NSInteger)jk_integerForKeyPath:(nonnull NSString *)keyPath;
+- (CGFloat)jk_cgFloatForKey:(NSString *)key;
 
-/// 存在精度问题，可以通过限定位数，NSDecimalNumber 实现更高的精度
-/// @param keyPath keyPath
-- (CGFloat)jk_cgFloatForKeyPath:(nonnull NSString *)keyPath;
+- (CGFloat)jk_cgFloatForKeyPath:(NSString *)keyPath;
 
-/// 存在精度问题，可以通过限定位数，NSDecimalNumber 实现更高的精度
-/// @param keyPath keyPath
-- (float)jk_floatForKeyPath:(nonnull NSString *)keyPath;
+- (double)jk_doubleForKey:(NSString *)key;
 
-/// 存在精度问题，可以通过限定位数，NSDecimalNumber 实现更高的精度
-/// @param keyPath keyPath
-- (double)jk_doubleForKeyPath:(nonnull NSString *)keyPath;
+- (double)jk_doubleForKeyPath:(NSString *)keyPath;
 
-- (BOOL)jk_boolForKeyPath:(nonnull NSString *)keyPath;
+- (long long)jk_longLongForKey:(NSString *)key;
+
+- (long long)jk_longLongForKeyPath:(NSString *)keyPath;
+
+- (unsigned long long)jk_unsignedLongLongForKey:(NSString *)key;
+
+- (unsigned long long)jk_unsignedLongLongForKeyPath:(NSString *)keyPath;
+
+- (nullable NSDate *)jk_dateForKey:(NSString *)key
+                        dateFormat:(NSString *)dateFormat;
+
+- (nullable NSDate *)jk_dateForKeyPath:(NSString *)keyPath
+                        dateFormat:(NSString *)dateFormat;
+
+- (CGPoint)jk_pointForKey:(NSString *)key;
+
+- (CGPoint)jk_pointForKeyPath:(NSString *)keyPath;
+
+- (CGSize)jk_sizeForKey:(NSString *)key;
+
+- (CGSize)jk_sizeForKeyPath:(NSString *)keyPath;
+
+- (CGRect)jk_rectForKey:(NSString *)key;
+
+- (CGRect)jk_rectForKeyPath:(NSString *)keyPath;
+
 
 @end
+
+NS_ASSUME_NONNULL_END
+
