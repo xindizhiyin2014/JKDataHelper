@@ -1,16 +1,23 @@
 PODS:
-  - JKDataHelper (0.1.19)
+  - JKDataHelper (0.1.24)
+  - Kiwi (3.0.0)
 
 DEPENDENCIES:
-  - JKDataHelper (from `../`)
+  - JKDataHelper (from `../../`)
+  - Kiwi
+
+SPEC REPOS:
+  trunk:
+    - Kiwi
 
 EXTERNAL SOURCES:
   JKDataHelper:
-    :path: "../"
+    :path: "../../"
 
 SPEC CHECKSUMS:
-  JKDataHelper: adaff6d418643255ccc81244848ef6acc3128ac8
+  JKDataHelper: 26936af98f19826ea9c3311469646034fde2c90f
+  Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
 
-PODFILE CHECKSUM: 544faa83df11b1bc48e049acad29afb707cf33b0
+PODFILE CHECKSUM: 2c7589afd831f2987a5ef3664ecd3ad2e9a834e1
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
