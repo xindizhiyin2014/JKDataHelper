@@ -59,10 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)jk_boolForKeyPath:(NSString *)keyPath;
 
-- (char)jk_charForKey:(NSString *)key;
-
-- (char)jk_charForKeyPath:(NSString *)keyPath;
-
 - (short)jk_shortForKey:(NSString *)key;
 
 - (short)jk_shortForKeyPath:(NSString *)keyPath;

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NSArray<__covariant ObjectType> (JKDataHelper)
 
@@ -16,7 +17,7 @@
 /// @param index 索引
 /// @param theClass 指定的类型
 - (nullable ObjectType)jk_objectWithIndex:(NSInteger)index
-                      verifyClass:(nullable Class)theClass;
+                      verifyClass:(Class)theClass;
 
 - (nullable NSString*)jk_stringWithIndex:(NSInteger)index;
 
@@ -34,8 +35,6 @@
 
 - (BOOL)jk_boolWithIndex:(NSInteger)index;
 
-- (char)jk_charWithIndex:(NSInteger)index;
-
 - (short)jk_shortWithIndex:(NSInteger)index;
 
 - (float)jk_floatWithIndex:(NSInteger)index;
@@ -49,18 +48,18 @@
 - (unsigned long long)jk_unsignedLongLongWithIndex:(NSInteger)index;
 
 - (nullable NSDate *)jk_dateWithIndex:(NSInteger)index
-                           dateFormat:(nonnull NSString *)dateFormat;
+                           dateFormat:(NSString *)dateFormat;
 
 /**
  /// 获取数组元素中key对应的value的集合组成的数据，返回的数组内的元素是可以相同的
  @param key key
  @return key对应的value组成的数组
  */
-- (nonnull NSMutableArray *)jk_valueArrayWithKey:(nonnull NSString *)key;
+- (nonnull NSMutableArray *)jk_valueArrayWithKey:(NSString *)key;
 
 /// 获取数组元素中key对应的value的集合组成的数据，返回的数组内的元素是不相同
 /// @param key key
-- (nonnull NSArray *)jk_uniqueValuesWithKey:(nonnull NSString *)key;
+- (nonnull NSArray *)jk_uniqueValuesWithKey:(NSString *)key;
 
 /**
  升序
@@ -83,3 +82,6 @@
 - (CGRect)jk_rectWithIndex:(NSInteger)index;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
