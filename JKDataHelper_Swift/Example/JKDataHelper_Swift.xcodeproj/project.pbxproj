@@ -18,6 +18,7 @@
 		BD58DAE425D2657200CFD50E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAE225D2657200CFD50E /* LICENSE */; };
 		BD58DAE525D2657200CFD50E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAE325D2657200CFD50E /* README.md */; };
 		BD58DAE925D2659D00CFD50E /* JKDataHelper_Swift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAE825D2659D00CFD50E /* JKDataHelper_Swift.podspec */; };
+		BD9BD5AD26494E3F0072BED4 /* JKArrayExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9BD5AC26494E3F0072BED4 /* JKArrayExtensionSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		BD58DAE225D2657200CFD50E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
 		BD58DAE325D2657200CFD50E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		BD58DAE825D2659D00CFD50E /* JKDataHelper_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JKDataHelper_Swift.podspec; path = ../../JKDataHelper_Swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BD9BD5AC26494E3F0072BED4 /* JKArrayExtensionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKArrayExtensionSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				BD9BD5AC26494E3F0072BED4 /* JKArrayExtensionSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -368,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				BD9BD5AD26494E3F0072BED4 /* JKArrayExtensionSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
