@@ -226,3 +226,6 @@ JKDataHelper_OC/Example/Pods/Target Support Files/Kiwi/Kiwi-umbrella.h
 JKDataHelper_OC/Example/Pods/Target Support Files/Kiwi/Kiwi.debug.xcconfig
 JKDataHelper_OC/Example/Pods/Target Support Files/Kiwi/Kiwi.modulemap
 JKDataHelper_OC/Example/Pods/Target Support Files/Kiwi/Kiwi.release.xcconfig
+JKDataHelper_Swift/Example/Pods/Nimble/Sources/Nimble/Matchers/BeginWithPrefix.swift
+JKDataHelper_Swift/Example/Pods/Nimble/Sources/Nimble/Utils/DispatchTimeInterval.swift
+JKDataHelper_Swift/Example/Pods/Quick/Sources/QuickObjCRuntime/include/QuickObjCRuntime.h
