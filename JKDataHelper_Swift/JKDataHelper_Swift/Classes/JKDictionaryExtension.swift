@@ -48,7 +48,7 @@ extension Dictionary {
             return nil
         }
         for key in keys! {
-            let index = keys!.firstIndex(of: key)
+            let index = keys!.index(of: key)
             if index! < keys!.count - 1 {
                 dic = dic!.jk_dictionary(forKey: key)
             } else if index == keys!.count - 1{
@@ -441,7 +441,7 @@ extension Dictionary {
         if string == nil {
             return nil
         }
-        return NSCoder.cgPoint(for: string!)
+        return CGPointFromString(string!)
     }
     
     public func jk_point(forKeyPath keyPath:String) -> CGPoint? {
@@ -449,7 +449,7 @@ extension Dictionary {
         if string == nil {
             return nil
         }
-        return NSCoder.cgPoint(for: string!)
+        return CGPointFromString(string!)
     }
     
     public func jk_size(forKey key:String?) -> CGSize? {
@@ -457,7 +457,7 @@ extension Dictionary {
         if string == nil {
             return nil
         }
-        return NSCoder.cgSize(for: string!)
+        return CGSizeFromString(string!)
     }
     
     public func jk_size(forKeyPath keyPath:String?) -> CGSize? {
@@ -465,7 +465,7 @@ extension Dictionary {
         if string == nil {
             return nil
         }
-        return NSCoder.cgSize(for: string!)
+        return CGSizeFromString(string!)
     }
     
     public func jk_rect(forKey key:String?) -> CGRect? {
@@ -473,7 +473,7 @@ extension Dictionary {
         if string == nil {
             return nil
         }
-        return NSCoder.cgRect(for: string!)
+        return CGRectFromString(string!)
     }
     
     public func jk_rect(forKeyPath keyPath:String?) -> CGRect? {
@@ -481,7 +481,7 @@ extension Dictionary {
         if string == nil {
             return nil
         }
-        return NSCoder.cgRect(for: string!)
+        return CGRectFromString(string!)
     }
     
 }

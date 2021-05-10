@@ -9,12 +9,11 @@ import Foundation
 extension Array {
     
    public func jk_object(index:Int) -> Element? {
-        if index < 0 || index >= count {
+        if index < 0 || index >= self.count {
             #if DEBUG
-            assert(false, "out of range")
-            #else
-            return nil
+            assert(false, "out of bounds")
             #endif
+           return nil
         }
         return self[index]
     }
