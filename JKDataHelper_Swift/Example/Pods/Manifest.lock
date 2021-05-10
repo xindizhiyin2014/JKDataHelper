@@ -1,7 +1,7 @@
 PODS:
   - JKDataHelper_Swift (0.1.24)
-  - Nimble (8.0.9)
-  - Quick (2.2.1)
+  - Nimble (9.2.0)
+  - Quick (4.0.0)
 
 DEPENDENCIES:
   - JKDataHelper_Swift (from `../../`)
@@ -19,8 +19,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   JKDataHelper_Swift: cb8cd9276e008aecd32730241f8c0a57e1123d74
-  Nimble: 98b888285a615fd34f20e61753cf58ea1402bde4
-  Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
+  Nimble: 4f4a345c80b503b3ea13606a4f98405974ee4d0b
+  Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
 
 PODFILE CHECKSUM: a460f0ab422b2a9f49c0870f5680445c3759cca5
 
