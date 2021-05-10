@@ -1,9 +1,11 @@
+import Foundation
+
 public indirect enum ExpectationMessage {
     // --- Primary Expectations ---
     /// includes actual value in output ("expected to <message>, got <actual>")
     case expectedActualValueTo(/* message: */ String)
     /// uses a custom actual value string in output ("expected to <message>, got <actual>")
-    case expectedCustomValueTo(/* message: */ String, actual: String)
+    case expectedCustomValueTo(/* message: */ String, /* actual: */ String)
     /// excludes actual value in output ("expected to <message>")
     case expectedTo(/* message: */ String)
     /// allows any free-form message ("<message>")
@@ -20,6 +22,14 @@ public indirect enum ExpectationMessage {
 
     /// provides long-form multi-line explainations ("<expectation>\n\n<string>")
     case details(ExpectationMessage, String)
+
+    internal var sampleMessage: String {
+        let asStr = toString(actual: "<ACTUAL>", expected: "expected", to: "to")
+        let asFailureMessage = FailureMessage()
+        update(failureMessage: asFailureMessage)
+        // swiftlint:disable:next line_length
+        return "(toString(actual:expected:to:) -> \(asStr) || update(failureMessage:) -> \(asFailureMessage.stringValue))"
+    }
 
     /// Returns the smallest message after the "expected to" string that summarizes the error.
     ///
@@ -108,7 +118,7 @@ public indirect enum ExpectationMessage {
             case let .expectedActualValueTo(msg):
                 return .expectedActualValueTo(message + msg)
             case let .expectedCustomValueTo(msg, actual):
-                return .expectedCustomValueTo(message + msg, actual: actual)
+                return .expectedCustomValueTo(message + msg, actual)
             default:
                 return msg.visitLeafs(walk)
             }
@@ -183,7 +193,7 @@ extension FailureMessage {
 
         var message: ExpectationMessage = .fail(userDescription ?? "")
         if actualValue != "" && actualValue != nil {
-            message = .expectedCustomValueTo(postfixMessage, actual: actualValue ?? "")
+            message = .expectedCustomValueTo(postfixMessage, actualValue ?? "")
         } else if postfixMessage != defaultMessage.postfixMessage {
             if actualValue == nil {
                 message = .expectedTo(postfixMessage)
@@ -202,7 +212,6 @@ extension FailureMessage {
 }
 
 #if canImport(Darwin)
-import class Foundation.NSObject
 
 public class NMBExpectationMessage: NSObject {
     private let msg: ExpectationMessage
@@ -219,7 +228,7 @@ public class NMBExpectationMessage: NSObject {
     }
 
     public init(expectedActualValueTo message: String, customActualValue actual: String) {
-        self.msg = .expectedCustomValueTo(message, actual: actual)
+        self.msg = .expectedCustomValueTo(message, actual)
     }
 
     public init(fail message: String) {

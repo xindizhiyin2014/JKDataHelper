@@ -40,24 +40,32 @@ extension Float: TestOutputStringConvertible {
 }
 
 extension NSNumber: TestOutputStringConvertible {
+    // This is using `NSString(format:)` instead of
+    // `String(format:)` because the latter somehow breaks
+    // the travis CI build on linux.
     public var testDescription: String {
         let description = self.description
 
         if description.contains(".") {
-            let decimalPlaces = description.split(separator: ".")[1]
-            switch decimalPlaces.count {
+            // Travis linux swiftpm build doesn't like casting String to NSString,
+            // which is why this annoying nested initializer thing is here.
+            // Maybe this will change in a future snapshot.
+            let decimalPlaces = NSString(string: NSString(string: description)
+                .components(separatedBy: ".")[1])
+
+            // SeeAlso: https://bugs.swift.org/browse/SR-1464
+            switch decimalPlaces.length {
             case 1:
-                return String(format: "%0.1f", doubleValue)
+                return NSString(format: "%0.1f", self.doubleValue).description
             case 2:
-                return String(format: "%0.2f", doubleValue)
+                return NSString(format: "%0.2f", self.doubleValue).description
             case 3:
-                return String(format: "%0.3f", doubleValue)
+                return NSString(format: "%0.3f", self.doubleValue).description
             default:
-                return String(format: "%0.4f", doubleValue)
+                return NSString(format: "%0.4f", self.doubleValue).description
             }
         }
-
-        return description
+        return self.description
     }
 }
 
@@ -72,7 +80,7 @@ extension AnySequence: TestOutputStringConvertible {
     public var testDescription: String {
         let generator = self.makeIterator()
         var strings = [String]()
-        var value: AnySequence.Element?
+        var value: AnySequence.Iterator.Element?
 
         repeat {
             value = generator.next()

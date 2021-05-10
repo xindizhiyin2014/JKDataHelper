@@ -16,7 +16,7 @@ public func beAnInstanceOf<T>(_ expectedType: T.Type) -> Predicate<Any> {
 
         return PredicateResult(
             status: PredicateStatus(bool: type(of: validInstance) == expectedType),
-            message: .expectedCustomValueTo(errorMessage, actual: actualString)
+            message: .expectedCustomValueTo(errorMessage, actualString)
         )
     }
 }
@@ -40,14 +40,14 @@ public func beAnInstanceOf(_ expectedClass: AnyClass) -> Predicate<NSObject> {
         #endif
         return PredicateResult(
             status: PredicateStatus(bool: matches),
-            message: .expectedCustomValueTo(errorMessage, actual: actualString)
+            message: .expectedCustomValueTo(errorMessage, actualString)
         )
     }
 }
 
 #if canImport(Darwin)
-extension NMBPredicate {
-    @objc public class func beAnInstanceOfMatcher(_ expected: AnyClass) -> NMBPredicate {
+extension NMBObjCMatcher {
+    @objc public class func beAnInstanceOfMatcher(_ expected: AnyClass) -> NMBMatcher {
         return NMBPredicate { actualExpression in
             return try beAnInstanceOf(expected).satisfies(actualExpression).toObjectiveC()
         }

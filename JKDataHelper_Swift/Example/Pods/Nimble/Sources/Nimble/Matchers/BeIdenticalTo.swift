@@ -1,3 +1,5 @@
+import Foundation
+
 /// A Nimble matcher that succeeds when the actual value is the same instance
 /// as the expected instance.
 public func beIdenticalTo(_ expected: Any?) -> Predicate<Any> {
@@ -9,20 +11,17 @@ public func beIdenticalTo(_ expected: Any?) -> Predicate<Any> {
             bool: bool,
             message: .expectedCustomValueTo(
                 "be identical to \(identityAsString(expected))",
-                actual: "\(identityAsString(actual))"
+                "\(identityAsString(actual))"
             )
         )
     }
 }
 
-extension Expectation where T == Any {
-    public static func === (lhs: Expectation, rhs: Any?) {
-        lhs.to(beIdenticalTo(rhs))
-    }
-
-    public static func !== (lhs: Expectation, rhs: Any?) {
-        lhs.toNot(beIdenticalTo(rhs))
-    }
+public func === (lhs: Expectation<Any>, rhs: Any?) {
+    lhs.to(beIdenticalTo(rhs))
+}
+public func !== (lhs: Expectation<Any>, rhs: Any?) {
+    lhs.toNot(beIdenticalTo(rhs))
 }
 
 /// A Nimble matcher that succeeds when the actual value is the same instance
@@ -34,10 +33,8 @@ public func be(_ expected: Any?) -> Predicate<Any> {
 }
 
 #if canImport(Darwin)
-import class Foundation.NSObject
-
-extension NMBPredicate {
-    @objc public class func beIdenticalToMatcher(_ expected: NSObject?) -> NMBPredicate {
+extension NMBObjCMatcher {
+    @objc public class func beIdenticalToMatcher(_ expected: NSObject?) -> NMBMatcher {
         return NMBPredicate { actualExpression in
             let aExpr = actualExpression.cast { $0 as Any? }
             return try beIdenticalTo(expected).satisfies(aExpr).toObjectiveC()

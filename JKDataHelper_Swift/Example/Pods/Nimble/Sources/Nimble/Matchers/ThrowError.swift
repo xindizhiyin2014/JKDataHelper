@@ -1,3 +1,5 @@
+import Foundation
+
 /// A Nimble matcher that succeeds when the actual expression throws an
 /// error of the specified type or from the specified case.
 ///
@@ -9,7 +11,7 @@
 ///
 /// nil arguments indicates that the matcher should not attempt to match against
 /// that parameter.
-public func throwError<Out>() -> Predicate<Out> {
+public func throwError() -> Predicate<Any> {
     return Predicate { actualExpression in
         var actualError: Error?
         do {
@@ -19,15 +21,9 @@ public func throwError<Out>() -> Predicate<Out> {
         }
 
         if let actualError = actualError {
-            return PredicateResult(
-                bool: true,
-                message: .expectedCustomValueTo("throw any error", actual: "<\(actualError)>")
-            )
+            return PredicateResult(bool: true, message: .expectedCustomValueTo("throw any error", "<\(actualError)>"))
         } else {
-            return PredicateResult(
-                bool: false,
-                message: .expectedCustomValueTo("throw any error", actual: "no error")
-            )
+            return PredicateResult(bool: false, message: .expectedCustomValueTo("throw any error", "no error"))
         }
     }
 }
@@ -43,7 +39,7 @@ public func throwError<Out>() -> Predicate<Out> {
 ///
 /// nil arguments indicates that the matcher should not attempt to match against
 /// that parameter.
-public func throwError<T: Error, Out>(_ error: T, closure: ((Error) -> Void)? = nil) -> Predicate<Out> {
+public func throwError<T: Error>(_ error: T, closure: ((Error) -> Void)? = nil) -> Predicate<Any> {
     return Predicate { actualExpression in
         var actualError: Error?
         do {
@@ -52,7 +48,9 @@ public func throwError<T: Error, Out>(_ error: T, closure: ((Error) -> Void)? = 
             actualError = error
         }
 
-        let message = messageForError(
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(
+            failureMessage,
             actualError: actualError,
             error: error,
             errorType: nil,
@@ -74,7 +72,7 @@ public func throwError<T: Error, Out>(_ error: T, closure: ((Error) -> Void)? = 
             }
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }
 
@@ -89,7 +87,7 @@ public func throwError<T: Error, Out>(_ error: T, closure: ((Error) -> Void)? = 
 ///
 /// nil arguments indicates that the matcher should not attempt to match against
 /// that parameter.
-public func throwError<T: Error & Equatable, Out>(_ error: T, closure: ((T) -> Void)? = nil) -> Predicate<Out> {
+public func throwError<T: Error & Equatable>(_ error: T, closure: ((T) -> Void)? = nil) -> Predicate<Any> {
     return Predicate { actualExpression in
         var actualError: Error?
         do {
@@ -98,7 +96,9 @@ public func throwError<T: Error & Equatable, Out>(_ error: T, closure: ((T) -> V
             actualError = error
         }
 
-        let message = messageForError(
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(
+            failureMessage,
             actualError: actualError,
             error: error,
             errorType: nil,
@@ -120,7 +120,7 @@ public func throwError<T: Error & Equatable, Out>(_ error: T, closure: ((T) -> V
             }
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }
 
@@ -135,10 +135,9 @@ public func throwError<T: Error & Equatable, Out>(_ error: T, closure: ((T) -> V
 ///
 /// nil arguments indicates that the matcher should not attempt to match against
 /// that parameter.
-public func throwError<T: Error, Out>(
+public func throwError<T: Error>(
     errorType: T.Type,
-    closure: ((T) -> Void)? = nil
-) -> Predicate<Out> {
+    closure: ((T) -> Void)? = nil) -> Predicate<Any> {
     return Predicate { actualExpression in
         var actualError: Error?
         do {
@@ -147,7 +146,9 @@ public func throwError<T: Error, Out>(
             actualError = error
         }
 
-        let message = messageForError(
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(
+            failureMessage,
             actualError: actualError,
             error: nil,
             errorType: errorType,
@@ -186,7 +187,7 @@ public func throwError<T: Error, Out>(
             }
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }
 
@@ -197,7 +198,7 @@ public func throwError<T: Error, Out>(
 /// values of the existential type `Error` in the closure.
 ///
 /// The closure only gets called when an error was thrown.
-public func throwError<Out>(closure: @escaping ((Error) -> Void)) -> Predicate<Out> {
+public func throwError(closure: @escaping ((Error) -> Void)) -> Predicate<Any> {
     return Predicate { actualExpression in
         var actualError: Error?
         do {
@@ -206,7 +207,8 @@ public func throwError<Out>(closure: @escaping ((Error) -> Void)) -> Predicate<O
             actualError = error
         }
 
-        let message = messageForError(actualError: actualError, closure: closure)
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(failureMessage, actualError: actualError, closure: closure)
 
         var matches = false
         if let actualError = actualError {
@@ -221,7 +223,7 @@ public func throwError<Out>(closure: @escaping ((Error) -> Void)) -> Predicate<O
             }
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }
 
@@ -232,7 +234,7 @@ public func throwError<Out>(closure: @escaping ((Error) -> Void)) -> Predicate<O
 /// values of the existential type `Error` in the closure.
 ///
 /// The closure only gets called when an error was thrown.
-public func throwError<T: Error, Out>(closure: @escaping ((T) -> Void)) -> Predicate<Out> {
+public func throwError<T: Error>(closure: @escaping ((T) -> Void)) -> Predicate<Any> {
     return Predicate { actualExpression in
         var actualError: Error?
         do {
@@ -241,7 +243,8 @@ public func throwError<T: Error, Out>(closure: @escaping ((T) -> Void)) -> Predi
             actualError = error
         }
 
-        let message = messageForError(actualError: actualError, closure: closure)
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(failureMessage, actualError: actualError, closure: closure)
 
         var matches = false
         if let actualError = actualError as? T {
@@ -256,6 +259,6 @@ public func throwError<T: Error, Out>(closure: @escaping ((T) -> Void)) -> Predi
             }
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }

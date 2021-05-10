@@ -1,3 +1,5 @@
+import Foundation
+
 /// A Nimble matcher that succeeds when the actual value matches with any of the matchers
 /// provided in the variable list of matchers.
 public func satisfyAnyOf<T>(_ predicates: Predicate<T>...) -> Predicate<T> {
@@ -6,24 +8,19 @@ public func satisfyAnyOf<T>(_ predicates: Predicate<T>...) -> Predicate<T> {
 
 /// A Nimble matcher that succeeds when the actual value matches with any of the matchers
 /// provided in the variable list of matchers. 
-@available(*, deprecated, message: "Use Predicate instead")
 public func satisfyAnyOf<T, U>(_ matchers: U...) -> Predicate<T>
     where U: Matcher, U.ValueType == T {
         return satisfyAnyOf(matchers.map { $0.predicate })
 }
 
-/// A Nimble matcher that succeeds when the actual value matches with any of the matchers
-/// provided in the array of matchers.
-public func satisfyAnyOf<T>(_ predicates: [Predicate<T>]) -> Predicate<T> {
+internal func satisfyAnyOf<T>(_ predicates: [Predicate<T>]) -> Predicate<T> {
         return Predicate.define { actualExpression in
             var postfixMessages = [String]()
-            var status: PredicateStatus = .doesNotMatch
+            var matches = false
             for predicate in predicates {
                 let result = try predicate.satisfies(actualExpression)
-                if result.status == .fail {
-                    status = .fail
-                } else if result.status == .matches, status != .fail {
-                    status = .matches
+                if result.toBoolean(expectation: .toMatch) {
+                    matches = true
                 }
                 postfixMessages.append("{\(result.message.expectedMessage)}")
             }
@@ -32,7 +29,7 @@ public func satisfyAnyOf<T>(_ predicates: [Predicate<T>]) -> Predicate<T> {
             if let actualValue = try actualExpression.evaluate() {
                 msg = .expectedCustomValueTo(
                     "match one of: " + postfixMessages.joined(separator: ", or "),
-                    actual: "\(actualValue)"
+                    "\(actualValue)"
                 )
             } else {
                 msg = .expectedActualValueTo(
@@ -40,28 +37,24 @@ public func satisfyAnyOf<T>(_ predicates: [Predicate<T>]) -> Predicate<T> {
                 )
             }
 
-            return PredicateResult(status: status, message: msg)
+            return PredicateResult(bool: matches, message: msg)
         }
 }
 
 public func || <T>(left: Predicate<T>, right: Predicate<T>) -> Predicate<T> {
-    return satisfyAnyOf(left, right)
+        return satisfyAnyOf(left, right)
 }
 
-@available(*, deprecated, message: "Use Predicate instead")
 public func || <T>(left: NonNilMatcherFunc<T>, right: NonNilMatcherFunc<T>) -> Predicate<T> {
     return satisfyAnyOf(left, right)
 }
 
-@available(*, deprecated, message: "Use Predicate instead")
 public func || <T>(left: MatcherFunc<T>, right: MatcherFunc<T>) -> Predicate<T> {
     return satisfyAnyOf(left, right)
 }
 
 #if canImport(Darwin)
-import class Foundation.NSObject
-
-extension NMBPredicate {
+extension NMBObjCMatcher {
     @objc public class func satisfyAnyOfMatcher(_ matchers: [NMBMatcher]) -> NMBPredicate {
         return NMBPredicate { actualExpression in
             if matchers.isEmpty {
@@ -77,6 +70,7 @@ extension NMBPredicate {
             for matcher in matchers {
                 let elementEvaluator = Predicate<NSObject> { expression in
                     if let predicate = matcher as? NMBPredicate {
+                        // swiftlint:disable:next line_length
                         return predicate.satisfies({ try expression.evaluate() }, location: actualExpression.location).toSwift()
                     } else {
                         let failureMessage = FailureMessage()

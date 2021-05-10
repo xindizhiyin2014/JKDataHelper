@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## JKDataHelper_Swift
 
-Copyright (c) 2017 HHL110120 <929097264@qq.com>
+Copyright (c) 2021 xindizhiyin2014 <hlhan@vova.com.hk>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

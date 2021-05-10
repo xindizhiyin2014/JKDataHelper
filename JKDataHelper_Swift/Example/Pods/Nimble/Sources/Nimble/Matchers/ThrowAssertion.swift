@@ -1,10 +1,10 @@
-#if canImport(CwlPreconditionTesting) && (os(macOS) || os(iOS))
-import CwlPreconditionTesting
-#elseif canImport(CwlPosixPreconditionTesting)
-import CwlPosixPreconditionTesting
+import Foundation
+
+#if canImport(NimbleCwlPreconditionTesting)
+import NimbleCwlPreconditionTesting
 #endif
 
-public func throwAssertion<Out>() -> Predicate<Out> {
+public func throwAssertion() -> Predicate<Void> {
     return Predicate { actualExpression in
     #if arch(x86_64) && canImport(Darwin)
         let message = ExpectationMessage.expectedTo("throw an assertion")
@@ -28,7 +28,7 @@ public func throwAssertion<Out>() -> Predicate<Out> {
                 }
             #endif
             do {
-                _ = try actualExpression.evaluate()
+                try actualExpression.evaluate()
             } catch {
                 actualError = error
             }

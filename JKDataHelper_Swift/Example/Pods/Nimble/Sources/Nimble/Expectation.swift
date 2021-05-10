@@ -1,4 +1,6 @@
-@available(*, deprecated)
+import Foundation
+
+// Deprecated
 internal func expressionDoesNotMatch<T, U>(_ expression: Expression<T>, matcher: U, toNot: String, description: String?) -> (Bool, FailureMessage)
     where U: Matcher, U.ValueType == T {
     let msg = FailureMessage()
@@ -67,9 +69,7 @@ public struct Expectation<T> {
     ////////////////// OLD API /////////////////////
 
     /// DEPRECATED: Tests the actual value using a matcher to match.
-    @available(*, deprecated, message: "Use Predicate instead")
-    @discardableResult
-    public func to<U>(_ matcher: U, description: String? = nil) -> Self
+    public func to<U>(_ matcher: U, description: String? = nil)
         where U: Matcher, U.ValueType == T {
             let (pass, msg) = execute(
                 expression,
@@ -80,53 +80,43 @@ public struct Expectation<T> {
                 captureExceptions: false
             )
             verify(pass, msg)
-            return self
     }
 
     /// DEPRECATED: Tests the actual value using a matcher to not match.
-    @available(*, deprecated, message: "Use Predicate instead")
-    @discardableResult
-    public func toNot<U>(_ matcher: U, description: String? = nil) -> Self
+    public func toNot<U>(_ matcher: U, description: String? = nil)
         where U: Matcher, U.ValueType == T {
+        // swiftlint:disable:next line_length
         let (pass, msg) = expressionDoesNotMatch(expression, matcher: matcher, toNot: "to not", description: description)
         verify(pass, msg)
-        return self
     }
 
     /// DEPRECATED: Tests the actual value using a matcher to not match.
     ///
     /// Alias to toNot().
-    @available(*, deprecated, message: "Use Predicate instead")
-    @discardableResult
-    public func notTo<U>(_ matcher: U, description: String? = nil) -> Self
+    public func notTo<U>(_ matcher: U, description: String? = nil)
         where U: Matcher, U.ValueType == T {
-        return toNot(matcher, description: description)
+        toNot(matcher, description: description)
     }
 
     ////////////////// NEW API /////////////////////
 
     /// Tests the actual value using a matcher to match.
-    @discardableResult
-    public func to(_ predicate: Predicate<T>, description: String? = nil) -> Self {
+    public func to(_ predicate: Predicate<T>, description: String? = nil) {
         let (pass, msg) = execute(expression, .toMatch, predicate, to: "to", description: description)
         verify(pass, msg)
-        return self
     }
 
     /// Tests the actual value using a matcher to not match.
-    @discardableResult
-    public func toNot(_ predicate: Predicate<T>, description: String? = nil) -> Self {
+    public func toNot(_ predicate: Predicate<T>, description: String? = nil) {
         let (pass, msg) = execute(expression, .toNotMatch, predicate, to: "to not", description: description)
         verify(pass, msg)
-        return self
     }
 
     /// Tests the actual value using a matcher to not match.
     ///
     /// Alias to toNot().
-    @discardableResult
-    public func notTo(_ predicate: Predicate<T>, description: String? = nil) -> Self {
-        return toNot(predicate, description: description)
+    public func notTo(_ predicate: Predicate<T>, description: String? = nil) {
+        toNot(predicate, description: description)
     }
 
     // see:

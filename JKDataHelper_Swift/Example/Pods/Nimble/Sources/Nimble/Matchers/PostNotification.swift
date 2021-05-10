@@ -1,52 +1,38 @@
-#if canImport(Foundation)
 import Foundation
 
 internal class NotificationCollector {
     private(set) var observedNotifications: [Notification]
     private let notificationCenter: NotificationCenter
-    private let names: Set<Notification.Name>
-    private var tokens: [NSObjectProtocol]
+    private var token: NSObjectProtocol?
 
-    required init(notificationCenter: NotificationCenter, names: Set<Notification.Name> = []) {
+    required init(notificationCenter: NotificationCenter) {
         self.notificationCenter = notificationCenter
         self.observedNotifications = []
-        self.names = names
-        self.tokens = []
     }
 
     func startObserving() {
-        func addObserver(forName name: Notification.Name?) -> NSObjectProtocol {
-            return notificationCenter.addObserver(forName: name, object: nil, queue: nil) { [weak self] notification in
-                // linux-swift gets confused by .append(n)
-                self?.observedNotifications.append(notification)
-            }
-        }
-
-        if names.isEmpty {
-            tokens.append(addObserver(forName: nil))
-        } else {
-            names.forEach { name in
-                tokens.append(addObserver(forName: name))
-            }
+        // swiftlint:disable:next line_length
+        self.token = self.notificationCenter.addObserver(forName: nil, object: nil, queue: nil) { [weak self] notification in
+            // linux-swift gets confused by .append(n)
+            self?.observedNotifications.append(notification)
         }
     }
 
     deinit {
-        tokens.forEach { token in
-            notificationCenter.removeObserver(token)
+        if let token = self.token {
+            self.notificationCenter.removeObserver(token)
         }
     }
 }
 
 private let mainThread = pthread_self()
 
-private func _postNotifications<Out>(
+public func postNotifications(
     _ predicate: Predicate<[Notification]>,
-    from center: NotificationCenter,
-    names: Set<Notification.Name> = []
-) -> Predicate<Out> {
+    fromNotificationCenter center: NotificationCenter = .default
+) -> Predicate<Any> {
     _ = mainThread // Force lazy-loading of this value
-    let collector = NotificationCollector(notificationCenter: center, names: names)
+    let collector = NotificationCollector(notificationCenter: center)
     collector.startObserving()
     var once: Bool = false
 
@@ -74,42 +60,18 @@ private func _postNotifications<Out>(
 
         var result = try predicate.satisfies(collectorNotificationsExpression)
         result.message = result.message.replacedExpectation { message in
-            return .expectedCustomValueTo(message.expectedMessage, actual: actualValue)
+            return .expectedCustomValueTo(message.expectedMessage, actualValue)
         }
         return result
     }
 }
 
-public func postNotifications<Out>(
-    _ predicate: Predicate<[Notification]>,
-    from center: NotificationCenter = .default
-) -> Predicate<Out> {
-    _postNotifications(predicate, from: center)
-}
-
-@available(*, deprecated, renamed: "postNotifications(_:from:)")
-public func postNotifications<Out>(
-    _ predicate: Predicate<[Notification]>,
-    fromNotificationCenter center: NotificationCenter
-) -> Predicate<Out> {
-    postNotifications(predicate, from: center)
-}
-
-#if os(macOS)
-public func postDistributedNotifications<Out>(
-    _ predicate: Predicate<[Notification]>,
-    from center: DistributedNotificationCenter = .default(),
-    names: Set<Notification.Name>
-) -> Predicate<Out> {
-    _postNotifications(predicate, from: center, names: names)
-}
-#endif
-
-@available(*, deprecated, message: "Use Predicate instead")
 public func postNotifications<T>(
     _ notificationsMatcher: T,
-    from center: NotificationCenter = .default
-) -> Predicate<Any> where T: Matcher, T.ValueType == [Notification] {
+    fromNotificationCenter center: NotificationCenter = .default)
+    -> Predicate<Any>
+    where T: Matcher, T.ValueType == [Notification]
+{
     _ = mainThread // Force lazy-loading of this value
     let collector = NotificationCollector(notificationCenter: center)
     collector.startObserving()
@@ -136,12 +98,3 @@ public func postNotifications<T>(
         return PredicateResult(bool: match, message: failureMessage.toExpectationMessage())
     }
 }
-
-@available(*, deprecated, renamed: "postNotifications(_:from:)")
-public func postNotifications<T>(
-    _ notificationsMatcher: T,
-    fromNotificationCenter center: NotificationCenter
-) -> Predicate<Any> where T: Matcher, T.ValueType == [Notification] {
-    return postNotifications(notificationsMatcher, from: center)
-}
-#endif

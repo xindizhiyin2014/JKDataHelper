@@ -1,22 +1,22 @@
 {
   "name": "JKDataHelper_Swift",
-  "version": "0.1.24",
+  "version": "0.1.0",
   "summary": "A short description of JKDataHelper_Swift.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/xindizhiyin2014/JKDataHelper",
+  "homepage": "https://github.com/xindizhiyin2014/JKDataHelper_Swift",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "xindizhiyin2014": "929097264@qq.com"
+    "xindizhiyin2014": "hlhan@vova.com.hk"
   },
   "source": {
-    "git": "https://github.com/xindizhiyin2014/JKDataHelper.git",
-    "tag": "0.1.24"
+    "git": "https://github.com/xindizhiyin2014/JKDataHelper_Swift.git",
+    "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "JKDataHelper_Swift/JKDataHelper_Swift/Classes/**/*"
+  "source_files": "JKDataHelper_Swift/Classes/**/*"
 }

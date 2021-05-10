@@ -1,3 +1,5 @@
+import Foundation
+
 /// A Nimble matcher that succeeds when the actual expression evaluates to an
 /// error from the specified case.
 ///
@@ -7,7 +9,9 @@ public func matchError<T: Error>(_ error: T) -> Predicate<Error> {
     return Predicate.define { actualExpression in
         let actualError = try actualExpression.evaluate()
 
-        let message = messageForError(
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(
+            failureMessage,
             postfixMessageVerb: "match",
             actualError: actualError,
             error: error
@@ -18,7 +22,7 @@ public func matchError<T: Error>(_ error: T) -> Predicate<Error> {
             matches = true
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }
 
@@ -31,7 +35,9 @@ public func matchError<T: Error & Equatable>(_ error: T) -> Predicate<Error> {
     return Predicate.define { actualExpression in
         let actualError = try actualExpression.evaluate()
 
-        let message = messageForError(
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(
+            failureMessage,
             postfixMessageVerb: "match",
             actualError: actualError,
             error: error
@@ -42,7 +48,7 @@ public func matchError<T: Error & Equatable>(_ error: T) -> Predicate<Error> {
             matches = true
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }
 
@@ -52,7 +58,9 @@ public func matchError<T: Error>(_ errorType: T.Type) -> Predicate<Error> {
     return Predicate.define { actualExpression in
         let actualError = try actualExpression.evaluate()
 
-        let message = messageForError(
+        let failureMessage = FailureMessage()
+        setFailureMessageForError(
+            failureMessage,
             postfixMessageVerb: "match",
             actualError: actualError,
             errorType: errorType
@@ -63,6 +71,6 @@ public func matchError<T: Error>(_ errorType: T.Type) -> Predicate<Error> {
             matches = true
         }
 
-        return PredicateResult(bool: matches, message: message)
+        return PredicateResult(bool: matches, message: failureMessage.toExpectationMessage())
     }
 }

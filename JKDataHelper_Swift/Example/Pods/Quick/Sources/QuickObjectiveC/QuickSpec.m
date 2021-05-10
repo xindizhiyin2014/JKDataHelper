@@ -129,8 +129,6 @@ static QuickSpec *currentSpec = nil;
     return selector;
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 /**
  This method is used to record failures, whether they represent example
  expectations that were not met, or exceptions raised during test setup
@@ -141,24 +139,15 @@ static QuickSpec *currentSpec = nil;
                               inFile:(NSString *)filePath
                               atLine:(NSUInteger)lineNumber
                             expected:(BOOL)expected {
-    if (self != [QuickSpec current]) {
-        [[QuickSpec current] recordFailureWithDescription:description
-                                                   inFile:filePath
-                                                   atLine:lineNumber
-                                                 expected:expected];
-        return;
-    }
-
     if (self.example.isSharedExample) {
         filePath = self.example.callsite.file;
         lineNumber = self.example.callsite.line;
     }
-    [super recordFailureWithDescription:description
-                                 inFile:filePath
-                                 atLine:lineNumber
-                               expected:expected];
+    [currentSpec.testRun recordFailureWithDescription:description
+                                               inFile:filePath
+                                               atLine:lineNumber
+                                             expected:expected];
 }
-#pragma clang diagnostic pop
 
 @end
 
