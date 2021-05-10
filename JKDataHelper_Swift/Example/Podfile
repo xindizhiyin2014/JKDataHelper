@@ -3,12 +3,12 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'JKDataHelper_Swift_Example' do
-  pod 'JKDataHelper_Swift', :path => '../'
+  pod 'JKDataHelper_Swift', :path => '../../'
 
   target 'JKDataHelper_Swift_Tests' do
     inherit! :search_paths
 
-    pod 'Quick', '~> 2.2.0'
-    pod 'Nimble', '~> 8.0.7'
+    pod 'Quick'
+    pod 'Nimble'
   end
 end
