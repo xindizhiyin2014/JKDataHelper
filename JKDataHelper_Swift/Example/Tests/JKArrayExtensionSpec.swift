@@ -42,43 +42,214 @@ class JKArrayExtensionSpec:QuickSpec {
                 }
             }
             
-            context("jk_object<T>(index:Int, verifyClass:T)") {
+            context("jk_object<T>(index:Int, verifyClass:T.Type)") {
                 let string_array = ["a","b","c"]
                 it("index is right,class is not right") {
-//                    #if DEBUG
+                    #if DEBUG
                     expect{
                         string_array.jk_object(index: 0, verifyClass: Int.self)
                     }.to(throwAssertion())
-//                    #else
-//                    expect{
-//                        string_array.jk_object(index: 0, verifyClass: Int.self)
-//                    }.to(beNil())
-//                    #endif
+                    #else
+                    expect{
+                        string_array.jk_object(index: 0, verifyClass: Int.self)
+                    }.to(beNil())
+                    #endif
                 }
                 it("index is right,class is right") {
                     expect{
-                        string_array.jk_object(index: 0, verifyClass: Int.self)
+                        string_array.jk_object(index: 0, verifyClass: String.self)
                     }.to(be("a"))
                 }
             }
             
             context("jk_string(index:Int)") {
                 let string_array = ["a","b","c"]
-                let num_array = [1,2,3]
-                it("array is string array") {
+                let int_array = [1,2,3]
+                it("array is stringArray") {
                     expect {
                         string_array.jk_string(index: 0)
                     }.to(be("a"))
                 }
                 
-                it("array is not string Array") {
+                it("array is not stringArray") {
                     #if DEBUG
                     expect {
-                        num_array.jk_string(index: 0)
+                        int_array.jk_string(index: 0)
                     }.to(throwAssertion())
                     #else
-                    expect(num_array.jk_string(index: 0)) == nil
+                    expect(int_array.jk_string(index: 0)) == nil
                     #endif
+                }
+            }
+            
+            context("jk_number(index:Int)") {
+                let num1 = NSNumber.init(value: 1)
+                let num2 = NSNumber.init(value: 2)
+                let num3 = NSNumber.init(value: 3)
+                let number_array = [num1,num2,num3]
+                let string_array = ["a","b","c"]
+                it("array is stringArray") {
+                    #if DEBUG
+                    expect {
+                        string_array.jk_number(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        string_array.jk_number(index: 0)
+                    }.to(beNil())
+                    #endif
+                }
+                it("array is NumArray") {
+                    expect {
+                        number_array.jk_number(index: 0)
+                    }.to(be(num1))
+                }
+            }
+            
+            context("jk_decimalNumber(index:Int)") {
+                let num1 = NSDecimalNumber.init(value: 1)
+                let num2 = NSDecimalNumber.init(value: 2)
+                let num3 = NSDecimalNumber.init(value: 3)
+                let number_array = [num1,num2,num3]
+                let string_array = ["a","b","c"]
+                
+                it("array is stringArray") {
+                    #if DEBUG
+                    expect {
+                        string_array.jk_decimalNumber(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        string_array.jk_decimalNumber(index: 0)
+                    }.to(beNil())
+                    #endif
+                }
+                
+                it("array is DecimalArray") {
+                    expect {
+                        number_array.jk_decimalNumber(index: 0)
+                    }.to(be(num1))
+                }
+            }
+            
+            context("jk_array(index:Int)") {
+                let array1 = [1,2,3]
+                let array2 = [2,3,4]
+                let array3 = [3,4,5]
+                let array_array = [array1,array2,array3]
+                let string_array = ["a","b","c"]
+
+                it("array is stringArray") {
+                    #if DEBUG
+                    expect {
+                        string_array.jk_array(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        string_array.jk_array(index: 0)
+                    }.to(beNil())
+                    #endif
+                }
+                
+                it("array is arrayArray") {
+                    expect {
+                        array_array.jk_array(index: 0)
+                    }.to(be(array1))
+                }
+            }
+            
+            context("jk_dictionary(index:Int)") {
+                let dic1 = ["key":1]
+                let dic2 = ["key":2]
+                let dic3 = ["key":3]
+                let dic_array = [dic1,dic2,dic3]
+                let string_array = ["a","b","c"]
+                it("array is stringArray") {
+                    #if DEBUG
+                    expect {
+                        string_array.jk_dictionary(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        string_array.jk_dictionary(index: 0)
+                    }.to(beNil())
+                    #endif
+                }
+                it("array is dic_array") {
+                    expect {
+                        dic_array.jk_dictionary(index: 0)
+                    }.to(be(dic1))
+                }
+            }
+            
+            context("jk_int(index:Int)") {
+                let int_array = [1,2,3]
+                let string_string_array = ["a","b","c"]
+                it("array is string(String)Array") {
+                    expect {
+                        string_string_array.jk_int(index: 0)
+                    }.to(beNil())
+                }
+                it("array is string(Int)Array") {
+                    
+                }
+                
+                it("array is numArray") {
+                    
+                }
+                
+                it("array is dicArray") {
+                    
+                }
+                
+                it("array is intArray") {
+                    expect {
+                        int_array.jk_int(index: 0)
+                    }.to(be(1))
+                }
+            }
+            
+            context("jk_float(index:Int)") {
+                let float_array = [1.1,2.2,3.3]
+                let string_array = ["a","b","c"]
+                it("array is stringArray") {
+                    #if DEBUG
+                    expect {
+                        string_array.jk_float(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        string_array.jk_float(index: 0)
+                    }.to(beNil())
+                    #endif
+                }
+                
+                it("array is floatArray") {
+                    expect {
+                        float_array.jk_float(index: 0)
+                    }.to(be(1.1))
+                }
+            }
+            
+            context("jk_double(index:Int)") {
+                
+                it("array is dicArray") {
+                    
+                }
+                it("array is num_array") {
+                    
+                }
+                
+                it("array is string(Double)Array") {
+                    
+                }
+                
+                it("array is string(String)Array") {
+                    
+                }
+                
+                it("array is doubleArray") {
+                    
                 }
             }
         }

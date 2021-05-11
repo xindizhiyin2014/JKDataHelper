@@ -18,19 +18,19 @@ extension Array {
         return self[index]
     }
     
-    public func jk_object<T>(index:Int, verifyClass:T) -> Element? {
-        var object:Element? = jk_object(index: index)
-        if  type(of: object) != type(of: verifyClass) {
+    public func jk_object<T>(index:Int, verifyClass:T.Type) -> Element? {
+        let object:Element? = jk_object(index: index)
+        if let element = object, type(of: element) != verifyClass {
             #if DEBUG
             assert(false, "object is not the verifyClass instance")
             #endif
-            object = nil
+            return nil
         }
         return object
     }
     
     public func jk_string(index:Int) -> String? {
-        let obj = jk_object(index: index, verifyClass: String.self) as? String
+        let obj = jk_object(index: index) as? String
         if obj == nil {
             #if DEBUG
             assert(false, "obj is not a string")
@@ -40,7 +40,7 @@ extension Array {
     }
     
     public func jk_number(index:Int) -> NSNumber? {
-        let obj = jk_object(index: index, verifyClass: NSNumber.self) as? NSNumber
+        let obj = jk_object(index: index) as? NSNumber
         if obj == nil {
             #if DEBUG
             assert(false, "obj is not number")
@@ -50,7 +50,7 @@ extension Array {
     }
     
     public func jk_decimalNumber(index:Int) -> NSDecimalNumber? {
-       let obj = jk_object(index: index, verifyClass: NSDecimalNumber.self) as? NSDecimalNumber
+       let obj = jk_object(index: index) as? NSDecimalNumber
         if obj == nil {
             #if DEBUG
             assert(false, "obj is not decimalNumber")
@@ -59,18 +59,23 @@ extension Array {
         return obj
     }
     
-    public func jk_array(index:Int) -> Array? {
-       let obj = jk_object(index: index, verifyClass: Array.self) as? Array
-        if obj == nil {
-            #if DEBUG
-            assert(false, "obj is not an Array")
-            #endif
-        }
-        return obj
+    public func jk_array(index:Int) -> Array<Element>? {
+        let element:Element? = jk_object(index: index)
+        if let object = element {
+            if type(of: object) != Array<Element>.self {
+                #if DEBUG
+                assert(false, "obj is not an Array")
+                #endif
+                return nil
+            } else {
+                return (object as! Array)
+            }
+       }
+       return nil
     }
     
     public func jk_dictionary(index:Int) -> Dictionary<String,Any>? {
-       let obj = jk_object(index: index, verifyClass: Dictionary<String,Any>.self) as? Dictionary<String,Any>
+       let obj = jk_object(index: index) as? Dictionary<String,Any>
         if obj == nil {
             #if DEBUG
             assert(false, "obj is not a Dictionary")
@@ -80,13 +85,17 @@ extension Array {
     }
     
     public func jk_int(index:Int) -> Int? {
-        let object:Element? = jk_object(index: index)
-        if  type(of: object) == String.self {
-            let string:String = object as! String
-           return Int(string)
-        } else if type(of: object) == NSNumber.self {
-            let number:NSNumber = object as! NSNumber
-            return number.intValue
+        let element:Element? = jk_object(index: index)
+        if let object = element {
+            if  type(of: object) == String.self {
+                let string:String = object as! String
+               return Int(string)
+            } else if type(of: object) == NSNumber.self {
+                let number:NSNumber = object as! NSNumber
+                return number.intValue
+            } else if type(of: object) == Int.self {
+                return (object as! Int)
+            }
         }
         #if DEBUG
         assert(false, "can't get intValue")
@@ -95,13 +104,17 @@ extension Array {
     }
     
     public func jk_float(index:Int) -> Float? {
-        let object:Element? = jk_object(index: index)
-        if  type(of: object) == String.self {
-            let string:String = object as! String
-           return Float(string)
-        } else if type(of: object) == NSNumber.self {
-            let number:NSNumber = object as! NSNumber
-            return number.floatValue
+        let element:Element? = jk_object(index: index)
+        if let object = element {
+            if  type(of: object) == String.self {
+                let string:String = object as! String
+               return Float(string)
+            } else if type(of: object) == NSNumber.self {
+                let number:NSNumber = object as! NSNumber
+                return number.floatValue
+            } else if type(of: object) == Float.self {
+                return (object as! Float)
+            }
         }
         #if DEBUG
         assert(false, "can't get floatValue")
@@ -110,13 +123,17 @@ extension Array {
     }
     
     public func jk_double(index:Int) -> Double? {
-        let object:Element? = jk_object(index: index)
-        if  type(of: object) == String.self {
-            let string:String = object as! String
-           return Double(string)
-        } else if type(of: object) == NSNumber.self {
-            let number:NSNumber = object as! NSNumber
-            return number.doubleValue
+        let element:Element? = jk_object(index: index)
+        if let object = element {
+            if  type(of: object) == String.self {
+                let string:String = object as! String
+               return Double(string)
+            } else if type(of: object) == NSNumber.self {
+                let number:NSNumber = object as! NSNumber
+                return number.doubleValue
+            } else if type(of: object) == Double.self {
+                return (object as! Double)
+            }
         }
         #if DEBUG
         assert(false, "can't get doubleValue")
@@ -125,10 +142,14 @@ extension Array {
     }
     
     public func jk_char(index:Int) -> Character? {
-        let object:Element? = jk_object(index: index)
-        if  type(of: object) == String.self {
-            let string:String = object as! String
-           return Character(string)
+        let element:Element? = jk_object(index: index)
+        if let object = element {
+            if  type(of: object) == String.self {
+                let string:String = object as! String
+               return Character(string)
+            } else if type(of: object) == Character.self {
+                return (object as! Character)
+            }
         }
         #if DEBUG
         assert(false, "can't get charValue")
@@ -137,15 +158,17 @@ extension Array {
     }
     
     public func jk_date(index:Int,format:String) -> Date? {
-        let object:Element? = jk_object(index: index)
-        if  type(of: object) == String.self{
-            let string:String = object as! String
-            if string.count > 0 {
-                let dateFormater = DateFormatter.init()
-                dateFormater.dateFormat = format
-                return dateFormater.date(from: string)
+        let element:Element? = jk_object(index: index)
+        if let object = element {
+            if  type(of: object) == String.self{
+                let string:String = object as! String
+                if string.count > 0 {
+                    let dateFormater = DateFormatter.init()
+                    dateFormater.dateFormat = format
+                    return dateFormater.date(from: string)
+                }
+               return nil
             }
-           return nil
         }
         #if DEBUG
         assert(false, "can't get Date")
