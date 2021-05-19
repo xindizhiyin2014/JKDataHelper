@@ -153,8 +153,8 @@ class JKArrayExtensionSpec:QuickSpec {
                 
                 it("array is arrayArray") {
                     expect {
-                        array_array.jk_array(index: 0)
-                    }.to(be(array1))
+                        array_array.jk_array(index: 0) as? Array<Int>
+                    }.to(equal(array1))
                 }
             }
             
@@ -177,29 +177,52 @@ class JKArrayExtensionSpec:QuickSpec {
                 }
                 it("array is dic_array") {
                     expect {
-                        dic_array.jk_dictionary(index: 0)
-                    }.to(be(dic1))
+                        dic_array.jk_dictionary(index: 0) as? Dictionary<String,Int>
+                    }.to(equal(dic1))
                 }
             }
             
             context("jk_int(index:Int)") {
                 let int_array = [1,2,3]
                 let string_string_array = ["a","b","c"]
+                let string_int_array = ["1","2","3"]
+                let num1 = NSNumber.init(value: 1)
+                let num2 = NSNumber.init(value: 2)
+                let num3 = NSNumber.init(value: 3)
+                let string_num_array = [num1,num2,num3]
+                
+                let dic1 = ["key":1]
+                let dic2 = ["key":2]
+                let dic3 = ["key":3]
+                let dic_array = [dic1,dic2,dic3]
+                
                 it("array is string(String)Array") {
                     expect {
                         string_string_array.jk_int(index: 0)
                     }.to(beNil())
                 }
                 it("array is string(Int)Array") {
-                    
+                    expect {
+                        string_int_array.jk_int(index: 0)
+                    }.to(be(1))
                 }
                 
                 it("array is numArray") {
-                    
+                    expect {
+                        string_num_array.jk_int(index: 0)
+                    }.to(be(1))
                 }
                 
                 it("array is dicArray") {
-                    
+                    #if DEBUG
+                    expect {
+                        dic_array.jk_int(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        dic_array.jk_int(index: 0)
+                    }.to(beNil())
+                    #endif
                 }
                 
                 it("array is intArray") {
@@ -210,16 +233,51 @@ class JKArrayExtensionSpec:QuickSpec {
             }
             
             context("jk_float(index:Int)") {
-                let float_array = [1.1,2.2,3.3]
-                let string_array = ["a","b","c"]
-                it("array is stringArray") {
+                let float1:Float = 1.1
+                let float2:Float = 2.2
+                let float3:Float = 3.3
+                let float_array = [float1,float2,float3]
+                let string_string_array = ["a","b","c"]
+                let string_float_array = ["1.1","2.2","3.3"]
+                
+                let num1 = NSNumber.init(value: float1)
+                let num2 = NSNumber.init(value: float2)
+                let num3 = NSNumber.init(value: float3)
+                let string_num_array = [num1,num2,num3]
+                
+                let dic1 = ["key":1]
+                let dic2 = ["key":2]
+                let dic3 = ["key":3]
+                let dic_array = [dic1,dic2,dic3]
+                
+                let float_num_array = [1.1,2.2,3.3]
+                
+                it("array is string(String)Array") {
+                    expect {
+                        string_string_array.jk_float(index: 0)
+                    }.to(beNil())
+                }
+                
+                it("array is string(Float)Array") {
+                    expect {
+                        string_float_array.jk_float(index: 0)
+                    }.to(equal(1.1))
+                }
+                
+                it("array is string(Num)Array") {
+                    expect {
+                        string_num_array.jk_float(index: 0)
+                    }.to(equal(1.1))
+                }
+                
+                it("array is dicArray") {
                     #if DEBUG
                     expect {
-                        string_array.jk_float(index: 0)
+                        dic_array.jk_float(index: 0)
                     }.to(throwAssertion())
                     #else
                     expect {
-                        string_array.jk_float(index: 0)
+                        dic_array.jk_float(index: 0)
                     }.to(beNil())
                     #endif
                 }
@@ -227,29 +285,77 @@ class JKArrayExtensionSpec:QuickSpec {
                 it("array is floatArray") {
                     expect {
                         float_array.jk_float(index: 0)
-                    }.to(be(1.1))
+                    }.to(equal(1.1))
+                }
+                
+                it("array is floatNumArray") {
+                    expect {
+                        float_num_array.jk_float(index: 0)
+                    }.to(equal(1.1))
                 }
             }
             
             context("jk_double(index:Int)") {
                 
-                it("array is dicArray") {
-                    
-                }
-                it("array is num_array") {
-                    
-                }
+                let double_array = [1.1,2.2,3.3]
+                let string_string_array = ["a","b","c"]
+                let string_double_array = ["1.1","2.2","3.3"]
                 
-                it("array is string(Double)Array") {
-                    
-                }
+                let num1 = NSNumber.init(value: 1.1)
+                let num2 = NSNumber.init(value: 2.2)
+                let num3 = NSNumber.init(value: 3.3)
+                let string_num_array = [num1,num2,num3]
+                
+                let dic1 = ["key":1]
+                let dic2 = ["key":2]
+                let dic3 = ["key":3]
+                let dic_array = [dic1,dic2,dic3]
+                
+                let float1:Float = 1.1
+                let float2:Float = 2.2
+                let float3:Float = 3.3
+                let float_array = [float1,float2,float3]
                 
                 it("array is string(String)Array") {
-                    
+                    expect {
+                        string_string_array.jk_double(index: 0)
+                    }.to(beNil())
+                }
+                
+                it("array is string(Float)Array") {
+                    expect {
+                        string_double_array.jk_double(index: 0)
+                    }.to(equal(1.1))
+                }
+                
+                it("array is string(Num)Array") {
+                    expect {
+                        string_num_array.jk_double(index: 0)
+                    }.to(equal(1.1))
+                }
+                
+                it("array is dicArray") {
+                    #if DEBUG
+                    expect {
+                        dic_array.jk_double(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        dic_array.jk_double(index: 0)
+                    }.to(beNil())
+                    #endif
                 }
                 
                 it("array is doubleArray") {
-                    
+                    expect {
+                        double_array.jk_double(index: 0)
+                    }.to(equal(1.1))
+                }
+                
+                it("array is floatArray") {
+                    expect {
+                        float_array.jk_double(index: 0)
+                    }.to(beCloseTo(1.1))
                 }
             }
         }

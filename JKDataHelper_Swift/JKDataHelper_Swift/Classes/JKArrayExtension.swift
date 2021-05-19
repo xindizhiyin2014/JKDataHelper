@@ -59,16 +59,17 @@ extension Array {
         return obj
     }
     
-    public func jk_array(index:Int) -> Array<Element>? {
+    public func jk_array(index:Int) -> Array<Any>? {
         let element:Element? = jk_object(index: index)
         if let object = element {
-            if type(of: object) != Array<Element>.self {
+            let typeString = "\(type(of: object))"
+            if typeString.hasPrefix("Array") == false {
                 #if DEBUG
                 assert(false, "obj is not an Array")
                 #endif
                 return nil
             } else {
-                return (object as! Array)
+                return object as? Array<Any>
             }
        }
        return nil
@@ -90,13 +91,14 @@ extension Array {
             if  type(of: object) == String.self {
                 let string:String = object as! String
                return Int(string)
-            } else if type(of: object) == NSNumber.self {
+            } else if "\(type(of: object))".contains("Number") == true {
                 let number:NSNumber = object as! NSNumber
                 return number.intValue
             } else if type(of: object) == Int.self {
                 return (object as! Int)
             }
         }
+        
         #if DEBUG
         assert(false, "can't get intValue")
         #endif
@@ -109,11 +111,13 @@ extension Array {
             if  type(of: object) == String.self {
                 let string:String = object as! String
                return Float(string)
-            } else if type(of: object) == NSNumber.self {
+            } else if "\(type(of: object))".contains("Number") == true {
                 let number:NSNumber = object as! NSNumber
                 return number.floatValue
             } else if type(of: object) == Float.self {
                 return (object as! Float)
+            } else if type(of: object) == Double.self {
+                return Float(object as! Double)
             }
         }
         #if DEBUG
@@ -128,11 +132,13 @@ extension Array {
             if  type(of: object) == String.self {
                 let string:String = object as! String
                return Double(string)
-            } else if type(of: object) == NSNumber.self {
+            } else if "\(type(of: object))".contains("Number") == true {
                 let number:NSNumber = object as! NSNumber
                 return number.doubleValue
             } else if type(of: object) == Double.self {
                 return (object as! Double)
+            }  else if type(of: object) == Float.self {
+                return Double(object as! Float)
             }
         }
         #if DEBUG
