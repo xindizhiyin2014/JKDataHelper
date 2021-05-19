@@ -152,6 +152,13 @@ extension Array {
         if let object = element {
             if  type(of: object) == String.self {
                 let string:String = object as! String
+                if string.count > 1 {
+                    #if DEBUG
+                    assert(false, "error:string.count > 1")
+                    #else
+                    return nil
+                    #endif
+                }
                return Character(string)
             } else if type(of: object) == Character.self {
                 return (object as! Character)
@@ -163,33 +170,14 @@ extension Array {
         return nil
     }
     
-    public func jk_date(index:Int,format:String) -> Date? {
-        let element:Element? = jk_object(index: index)
-        if let object = element {
-            if  type(of: object) == String.self{
-                let string:String = object as! String
-                if string.count > 0 {
-                    let dateFormater = DateFormatter.init()
-                    dateFormater.dateFormat = format
-                    return dateFormater.date(from: string)
-                }
-               return nil
-            }
-        }
-        #if DEBUG
-        assert(false, "can't get Date")
-        #endif
-        return nil
-    }
-    
-    public func jk_values(key:String) -> Array {
-        var values = Array.init()
+    public func jk_values(key:String) -> Array<Any> {
+        var values = [Any]()
         for obj in self {
             if obj is Dictionary<String, Any> {
                 let dic:Dictionary = obj as! Dictionary<String, Any>
                let value = dic[key]
                 if (value != nil) {
-                    values.append(value as! Element)
+                    values.append(value as Any)
                 }
             } else {
 //                #warning("todo")

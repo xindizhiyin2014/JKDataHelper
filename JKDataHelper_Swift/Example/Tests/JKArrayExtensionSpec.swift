@@ -358,6 +358,83 @@ class JKArrayExtensionSpec:QuickSpec {
                     }.to(beCloseTo(1.1))
                 }
             }
+            
+            context("jk_char(index:Int)") {
+                let char1:Character = Character.init("a")
+                let char2:Character = Character.init("a")
+                let char3:Character = Character.init("a")
+                let charArray = [char1,char2,char3]
+                
+                let stringArray1 = ["a","b","c"]
+                let stringArray2 = ["ab","bc","cd"]
+                let stringArray3 = ["1","2","3"]
+                let intArray = [1,2,3]
+                it("array is charArray") {
+                    expect {
+                        charArray.jk_char(index: 0)
+                    }.to(equal("a"))
+                }
+                
+                it("array is stringArray,element is characterString count == 1") {
+                    expect {
+                        stringArray1.jk_char(index: 0)
+                    }.to(equal("a"))
+                }
+                
+                it("array is stringArray,element is characterString count > 1") {
+                    #if DEBUG
+                    expect {
+                        stringArray2.jk_char(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        stringArray2.jk_char(index: 0)
+                    }.to(beNil())
+                    #endif
+                    
+                }
+                
+                it("array is stringArray, element is not characterString") {
+                    expect {
+                        stringArray3.jk_char(index: 0)
+                    }.to(equal("1"))
+                }
+                
+                it("array is intArray") {
+                    #if DEBUG
+                    expect {
+                        intArray.jk_char(index: 0)
+                    }.to(throwAssertion())
+                    #else
+                    expect {
+                        intArray.jk_char(index: 0)
+                    }.to(beNil())
+                    #endif
+                }
+            }
+            
+            context("jk_values(key:String)") {
+                let stringArray = ["aa","bb","cc"]
+                let dic1 = ["key":1]
+                let dic2 = ["key":2]
+                let dic3 = ["key":3]
+                let dic_array = [dic1,dic2,dic3]
+                
+                it("array is stringArray") {
+                    expect {
+                        stringArray.jk_values(key: "key")
+                    }.to(be([Any]()))
+                    
+                }
+                
+                it("array is dicArray") {
+                    expect {
+                        dic_array.jk_values(key: "key") as! [Int]
+                    }.to(equal([1,2,3]))
+                }
+            }
+            
+            
         }
     }
 }
