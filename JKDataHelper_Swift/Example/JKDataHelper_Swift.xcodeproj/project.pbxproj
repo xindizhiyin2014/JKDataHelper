@@ -19,6 +19,7 @@
 		BD58DAE525D2657200CFD50E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAE325D2657200CFD50E /* README.md */; };
 		BD58DAE925D2659D00CFD50E /* JKDataHelper_Swift.podspec in Resources */ = {isa = PBXBuildFile; fileRef = BD58DAE825D2659D00CFD50E /* JKDataHelper_Swift.podspec */; };
 		BD9BD5AD26494E3F0072BED4 /* JKArrayExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9BD5AC26494E3F0072BED4 /* JKArrayExtensionSpec.swift */; };
+		BDDA9C192655DC3600641DBC /* JKDictionaryExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDA9C182655DC3600641DBC /* JKDictionaryExtensionSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		BD58DAE325D2657200CFD50E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		BD58DAE825D2659D00CFD50E /* JKDataHelper_Swift.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JKDataHelper_Swift.podspec; path = ../../JKDataHelper_Swift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD9BD5AC26494E3F0072BED4 /* JKArrayExtensionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKArrayExtensionSpec.swift; sourceTree = "<group>"; };
+		BDDA9C182655DC3600641DBC /* JKDictionaryExtensionSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKDictionaryExtensionSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				BD9BD5AC26494E3F0072BED4 /* JKArrayExtensionSpec.swift */,
+				BDDA9C182655DC3600641DBC /* JKDictionaryExtensionSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -370,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDA9C192655DC3600641DBC /* JKDictionaryExtensionSpec.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				BD9BD5AD26494E3F0072BED4 /* JKArrayExtensionSpec.swift in Sources */,
 			);

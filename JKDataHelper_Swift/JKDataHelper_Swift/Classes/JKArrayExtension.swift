@@ -62,14 +62,13 @@ extension Array {
     public func jk_array(index:Int) -> Array<Any>? {
         let element:Element? = jk_object(index: index)
         if let object = element {
-            let typeString = "\(type(of: object))"
-            if typeString.hasPrefix("Array") == false {
+            if (object as? Array<Any>) != nil {
+                return object as? Array<Any>
+            } else {
                 #if DEBUG
                 assert(false, "obj is not an Array")
                 #endif
                 return nil
-            } else {
-                return object as? Array<Any>
             }
        }
        return nil
@@ -88,14 +87,13 @@ extension Array {
     public func jk_int(index:Int) -> Int? {
         let element:Element? = jk_object(index: index)
         if let object = element {
-            if  type(of: object) == String.self {
-                let string:String = object as! String
-               return Int(string)
-            } else if "\(type(of: object))".contains("Number") == true {
+            if object is Int {
+                return (object as! Int)
+            } else if  object is String {
+                return Int(object as! String)
+            } else if object is NSNumber {
                 let number:NSNumber = object as! NSNumber
                 return number.intValue
-            } else if type(of: object) == Int.self {
-                return (object as! Int)
             }
         }
         
@@ -108,16 +106,17 @@ extension Array {
     public func jk_float(index:Int) -> Float? {
         let element:Element? = jk_object(index: index)
         if let object = element {
-            if  type(of: object) == String.self {
-                let string:String = object as! String
-               return Float(string)
-            } else if "\(type(of: object))".contains("Number") == true {
+            if object is Float {
+                return (object as! Float)
+            }  else if  object is String {
+               return Float(object as! String)
+            } else if object is NSNumber {
                 let number:NSNumber = object as! NSNumber
                 return number.floatValue
-            } else if type(of: object) == Float.self {
-                return (object as! Float)
-            } else if type(of: object) == Double.self {
+            } else if object is Double {
                 return Float(object as! Double)
+            } else if object is Int {
+                return Float(object as! Int)
             }
         }
         #if DEBUG
@@ -129,16 +128,17 @@ extension Array {
     public func jk_double(index:Int) -> Double? {
         let element:Element? = jk_object(index: index)
         if let object = element {
-            if  type(of: object) == String.self {
-                let string:String = object as! String
-               return Double(string)
-            } else if "\(type(of: object))".contains("Number") == true {
+            if object is Double {
+                return (object as! Double)
+            } else if  object is String {
+               return Double(object as! String)
+            } else if object is NSNumber {
                 let number:NSNumber = object as! NSNumber
                 return number.doubleValue
-            } else if type(of: object) == Double.self {
-                return (object as! Double)
-            }  else if type(of: object) == Float.self {
+            } else if object is Float {
                 return Double(object as! Float)
+            } else if object is Int {
+                return Double(object as! Int)
             }
         }
         #if DEBUG
@@ -150,7 +150,7 @@ extension Array {
     public func jk_char(index:Int) -> Character? {
         let element:Element? = jk_object(index: index)
         if let object = element {
-            if  type(of: object) == String.self {
+            if object is String {
                 let string:String = object as! String
                 if string.count > 1 {
                     #if DEBUG
@@ -160,7 +160,7 @@ extension Array {
                     #endif
                 }
                return Character(string)
-            } else if type(of: object) == Character.self {
+            } else if object is Character {
                 return (object as! Character)
             }
         }
@@ -173,9 +173,9 @@ extension Array {
     public func jk_values(key:String) -> Array<Any> {
         var values = [Any]()
         for obj in self {
-            if obj is Dictionary<String, Any> {
-                let dic:Dictionary = obj as! Dictionary<String, Any>
-               let value = dic[key]
+            let dic = obj as? Dictionary<String, Any>;
+            if dic != nil {
+                let value = dic![key]
                 if (value != nil) {
                     values.append(value as Any)
                 }

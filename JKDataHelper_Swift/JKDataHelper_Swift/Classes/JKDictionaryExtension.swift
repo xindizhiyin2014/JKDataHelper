@@ -39,7 +39,7 @@ extension Dictionary {
             return nil
         }
         let keys:Array<String>? = keyPath?.components(separatedBy: ".")
-        var dic:Dictionary<Key,Value>? = self
+        var dic:Dictionary<String,Any>? = self as? Dictionary<String,Any>
         var object:Any? = nil
         if keys == nil {
             #if DEBUG
@@ -61,9 +61,9 @@ extension Dictionary {
         return object
     }
     
-    public func jk_object<T>(forKey key:String?, verifyClass:T) -> Any? {
+    public func jk_object<T>(forKey key:String?, verifyClass:T.Type) -> Any? {
         var object = jk_object(forKey: key)
-        if  type(of: object) != type(of: verifyClass) {
+        if let value = object, type(of: value) != verifyClass {
             #if DEBUG
             assert(false, "object is not the verifyClass instance")
             #endif
@@ -72,9 +72,9 @@ extension Dictionary {
         return object
     }
     
-    public func jk_object<T>(forKeyPath keyPath:String?,verifyClass:T) -> Any? {
+    public func jk_object<T>(forKeyPath keyPath:String?,verifyClass:T.Type) -> Any? {
         var object = jk_object(forKeyPath: keyPath)
-        if  type(of: object) != type(of: verifyClass) {
+        if let value = object, type(of: value) != verifyClass {
             #if DEBUG
             assert(false, "object is not the verifyClass instance")
             #endif
@@ -192,13 +192,13 @@ extension Dictionary {
         return nil
     }
     
-    public func jk_dictionary(forKey key:String?) -> Dictionary<Key,Value>? {
+    public func jk_dictionary(forKey key:String?) -> Dictionary<String,Any>? {
         let object = jk_object(forKey: key)
         if object == nil {
             return nil
         }
-        if object is Dictionary<Key,Value> {
-            return (object as! Dictionary<Key,Value>)
+        if object is Dictionary<String,Any> {
+            return (object as! Dictionary<String,Any>)
         }
         #if DEBUG
         assert(false, "object is not a Dictionary")
@@ -206,13 +206,13 @@ extension Dictionary {
         return nil
     }
     
-    public func jk_dictionary(forKeyPath keyPath:String?) -> Dictionary<Key,Value>? {
+    public func jk_dictionary(forKeyPath keyPath:String?) -> Dictionary<String,Any>? {
         let object = jk_object(forKeyPath: keyPath)
         if object == nil {
             return nil
         }
-        if object is Dictionary<Key,Value> {
-            return (object as! Dictionary<Key,Value>)
+        if object is Dictionary<String,Any> {
+            return (object as! Dictionary<String,Any>)
         }
         #if DEBUG
         assert(false, "object is not a Dictionary")
@@ -303,6 +303,13 @@ extension Dictionary {
         }
         if object is String {
             let string:String = object as! String
+            if string.count > 1 {
+                #if DEBUG
+                assert(false, "error:string.count > 1")
+                #else
+                return nil
+                #endif
+            }
             return Character(string)
         }
         #if DEBUG
@@ -318,6 +325,13 @@ extension Dictionary {
         }
         if object is String {
             let string:String = object as! String
+            if string.count > 1 {
+                #if DEBUG
+                assert(false, "error:string.count > 1")
+                #else
+                return nil
+                #endif
+            }
             return Character(string)
         }
         #if DEBUG
@@ -331,13 +345,21 @@ extension Dictionary {
         if object == nil {
             return nil
         }
+        if object is Float {
+            return (object as! Float)
+        }
+        if object is Double {
+            return Float(object as! Double)
+        }
+        if object is Int {
+            return Float(object as! Int)
+        }
         if object is NSNumber {
             let num:NSNumber = object as! NSNumber
             return num.floatValue
         }
         if object is String {
-            let string:String = object as! String
-            return Float(string)
+            return Float(object as! String)
         }
         #if DEBUG
         assert(false, "can't get a Float")
@@ -349,6 +371,15 @@ extension Dictionary {
         let object = jk_object(forKeyPath: keyPath)
         if object == nil {
             return nil
+        }
+        if object is Float {
+            return (object as! Float)
+        }
+        if object is Double {
+            return Float(object as! Double)
+        }
+        if object is Int {
+            return Float(object as! Int)
         }
         if object is NSNumber {
             let num:NSNumber = object as! NSNumber
@@ -369,13 +400,21 @@ extension Dictionary {
         if object == nil {
             return nil
         }
+        if object is Double {
+            return (object as! Double)
+        }
+        if object is Float {
+            return Double(object as! Float)
+        }
+        if object is Int {
+            return Double(object as! Int)
+        }
         if object is NSNumber {
             let num:NSNumber = object as! NSNumber
             return num.doubleValue
         }
         if object is String {
-            let string:String = object as! String
-            return Double(string)
+            return Double(object as! String)
         }
         #if DEBUG
         assert(false, "can't get a Double")
@@ -388,6 +427,15 @@ extension Dictionary {
         if object == nil {
             return nil
         }
+        if object is Double {
+            return (object as! Double)
+        }
+        if object is Float {
+            return Double(object as! Float)
+        }
+        if object is Int {
+            return Double(object as! Int)
+        }
         if object is NSNumber {
             let num:NSNumber = object as! NSNumber
             return num.doubleValue
@@ -400,88 +448,6 @@ extension Dictionary {
         assert(false, "can't get a Double")
         #endif
         return nil
-    }
-    
-    public func jk_date(forKey key:String?, format:String) -> Date? {
-        let object = jk_object(forKey: key)
-        if object == nil {
-            return nil
-        }
-        if object is String {
-            let string:String = object as! String
-            let dataFormatter = DateFormatter()
-            dataFormatter.dateFormat = format
-            return dataFormatter.date(from: string)
-        }
-        #if DEBUG
-        assert(false, "can't get a Date?")
-        #endif
-        return nil
-    }
-    
-    public func jk_date(forKeyPath keyPath:String?, format:String) -> Date? {
-        let object = jk_object(forKeyPath: keyPath)
-        if object == nil {
-            return nil
-        }
-        if object is String {
-            let string:String = object as! String
-            let dataFormatter = DateFormatter()
-            dataFormatter.dateFormat = format
-            return dataFormatter.date(from: string)
-        }
-        #if DEBUG
-        assert(false, "can't get a Date?")
-        #endif
-        return nil
-    }
-    
-    public func jk_point(forKey key:String) -> CGPoint? {
-        let string = jk_string(forKey: key)
-        if string == nil {
-            return nil
-        }
-        return CGPointFromString(string!)
-    }
-    
-    public func jk_point(forKeyPath keyPath:String) -> CGPoint? {
-        let string = jk_string(forKeyPath: keyPath)
-        if string == nil {
-            return nil
-        }
-        return CGPointFromString(string!)
-    }
-    
-    public func jk_size(forKey key:String?) -> CGSize? {
-        let string = jk_string(forKey: key)
-        if string == nil {
-            return nil
-        }
-        return CGSizeFromString(string!)
-    }
-    
-    public func jk_size(forKeyPath keyPath:String?) -> CGSize? {
-        let string = jk_string(forKeyPath: keyPath)
-        if string == nil {
-            return nil
-        }
-        return CGSizeFromString(string!)
-    }
-    
-    public func jk_rect(forKey key:String?) -> CGRect? {
-        let string = jk_string(forKey: key)
-        if string == nil {
-            return nil
-        }
-        return CGRectFromString(string!)
-    }
-    
-    public func jk_rect(forKeyPath keyPath:String?) -> CGRect? {
-        let string = jk_string(forKeyPath: keyPath)
-        if string == nil {
-            return nil
-        }
-        return CGRectFromString(string!)
     }
     
 }
