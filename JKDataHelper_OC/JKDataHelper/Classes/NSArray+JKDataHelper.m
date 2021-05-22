@@ -193,21 +193,6 @@
     return 0;
 }
 
-- (nullable NSDate *)jk_dateWithIndex:(NSInteger)index
-                           dateFormat:(NSString *)dateFormat {
-    
-    id value = [self jk_stringWithIndex:index];
-    if (value && ![value isEqualToString:@""] && dateFormat) {
-        NSDateFormatter *formater = [[NSDateFormatter alloc]init];
-        formater.dateFormat = dateFormat;
-        return [formater dateFromString:value];
-    }
-#if DEBUG
-    NSAssert(NO, @"can't convert to NSDate");
-#endif
-    return nil;
-}
-
 - (nonnull NSMutableArray *)jk_valueArrayWithKey:(nonnull NSString *)key
 {
     if (!key) {
@@ -289,27 +274,6 @@
         return [obj1 integerValue] < [obj2 integerValue];
     }];
     return array;
-}
-
-- (CGPoint)jk_pointWithIndex:(NSInteger)index
-{
-    NSString *value = [self jk_stringWithIndex:index];
-    CGPoint point = CGPointFromString(value);
-    return point;
-}
-
-- (CGSize)jk_sizeWithIndex:(NSInteger)index
-{
-    NSString *value = [self jk_stringWithIndex:index];
-    CGSize size = CGSizeFromString(value);
-    return size;
-}
-
-- (CGRect)jk_rectWithIndex:(NSInteger)index
-{
-    NSString *value = [self jk_stringWithIndex:index];
-    CGRect rect = CGRectFromString(value);
-    return rect;
 }
 
 

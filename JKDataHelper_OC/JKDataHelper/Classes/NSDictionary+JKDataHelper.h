@@ -83,24 +83,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (unsigned long long)jk_unsignedLongLongForKeyPath:(NSString *)keyPath;
 
-- (nullable NSDate *)jk_dateForKey:(NSString *)key
-                        dateFormat:(NSString *)dateFormat;
-
-- (nullable NSDate *)jk_dateForKeyPath:(NSString *)keyPath
-                        dateFormat:(NSString *)dateFormat;
-
-- (CGPoint)jk_pointForKey:(NSString *)key;
-
-- (CGPoint)jk_pointForKeyPath:(NSString *)keyPath;
-
-- (CGSize)jk_sizeForKey:(NSString *)key;
-
-- (CGSize)jk_sizeForKeyPath:(NSString *)keyPath;
-
-- (CGRect)jk_rectForKey:(NSString *)key;
-
-- (CGRect)jk_rectForKeyPath:(NSString *)keyPath;
-
 
 @end
 

@@ -46,10 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (long long)jk_longLongWithIndex:(NSInteger)index;
 
 - (unsigned long long)jk_unsignedLongLongWithIndex:(NSInteger)index;
-
-- (nullable NSDate *)jk_dateWithIndex:(NSInteger)index
-                           dateFormat:(NSString *)dateFormat;
-
 /**
  /// 获取数组元素中key对应的value的集合组成的数据，返回的数组内的元素是可以相同的
  @param key key
@@ -75,11 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nonnull NSMutableArray *)jk_descSort;
 
-- (CGPoint)jk_pointWithIndex:(NSInteger)index;
 
-- (CGSize)jk_sizeWithIndex:(NSInteger)index;
-
-- (CGRect)jk_rectWithIndex:(NSInteger)index;
 
 @end
 

@@ -418,54 +418,7 @@ describe(@"NSArray+JKDataHelper", ^{
         });
     });
     
-    context(@"jk_pointWithIndex", ^{
-        it(@"stringArray", ^{
-            CGPoint point = [stringArray jk_pointWithIndex:1];
-            [[theValue(point.x == 0 && point.y == 0) should] beTrue];
-        });
-        it(@"pointArray", ^{
-            NSArray *pointArray = @[@"{1,2}",@"{2,3}",@"{3,4}"];
-            CGPoint point = [pointArray jk_pointWithIndex:1];
-            [[theValue(point.x == 2 && point.y == 3) should] beTrue];
-        });
-    });
-    
-    context(@"jk_pointWithIndex", ^{
-        it(@"stringArray", ^{
-            CGPoint point = [stringArray jk_pointWithIndex:1];
-            [[theValue(point.x == 0 && point.y == 0) should] beTrue];
-        });
-        it(@"pointArray", ^{
-            NSArray *pointArray = @[@"{1,2}",@"{2,3}",@"{3,4}"];
-            CGPoint point = [pointArray jk_pointWithIndex:1];
-            [[theValue(point.x == 2 && point.y == 3) should] beTrue];
-        });
-    });
-    
-    context(@"jk_sizeWithIndex", ^{
-        it(@"stringArray", ^{
-            CGSize size = [stringArray jk_sizeWithIndex:1];
-            [[theValue(size.width == 0 && size.height == 0) should] beTrue];
-        });
-        it(@"sizeArray", ^{
-            NSArray *sizeArray = @[@"{1,2}",@"{2,3}",@"{3,4}"];
-            CGSize size = [sizeArray jk_sizeWithIndex:1];
-            [[theValue(size.width == 2 && size.height == 3) should] beTrue];
-        });
-    });
-    
-    context(@"jk_rectWithIndex", ^{
-        it(@"stringArray", ^{
-            CGRect rect = [stringArray jk_rectWithIndex:1];
-            [[theValue(rect.origin.x == 0 && rect.origin.y == 0&&rect.size.width == 0 && rect.size.height == 0) should] beTrue];
-        });
-        it(@"sizeArray", ^{
-            NSArray *rectArray = @[@"{{0,0},{1,2}}",@"{{0,0},{2,3}}",@"{{0,0},{3,4}}"];
-            CGRect rect = [rectArray jk_rectWithIndex:1];
-
-            [[theValue(rect.origin.x == 0 && rect.origin.y == 0&&rect.size.width == 2 && rect.size.height == 3) should] beTrue];
-        });
-    });
+   
     
 });
 
