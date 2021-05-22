@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKDataHelper'
-  s.version          = '0.1.25'
+  s.version          = '0.1.26'
   s.summary          = 'this is a tool to help developer to avoid bugs or crashes by the unstable APIs..,and cause assert in debug evnvironment.'
 
 # This description is used to generate tags and improve search results.

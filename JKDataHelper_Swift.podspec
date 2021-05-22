@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKDataHelper_Swift'
-  s.version          = '0.1.25'
+  s.version          = '0.1.26'
   s.summary          = 'A short description of JKDataHelper_Swift.'
 
 # This description is used to generate tags and improve search results.
