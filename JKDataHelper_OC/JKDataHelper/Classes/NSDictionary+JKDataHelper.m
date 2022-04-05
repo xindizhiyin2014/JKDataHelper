@@ -46,6 +46,9 @@
     for (NSInteger i = 0; i < keys.count; i++) {
         NSString *key = keys[i];
         obj = [obj jk_objectForKey:key];
+        if (!obj) {
+            return  nil;
+        }
         if ((i < keys.count - 1)
             && (![obj isKindOfClass:[NSDictionary class]])) {
 #if DEBUG
