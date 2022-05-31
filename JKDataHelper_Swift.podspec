@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKDataHelper_Swift'
-  s.version          = '0.1.26'
+  s.version          = '0.1.28'
   s.summary          = 'A short description of JKDataHelper_Swift.'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
-
+  s.osx.deployment_target = '10.11'
   s.source_files = 'JKDataHelper_Swift/JKDataHelper_Swift/Classes/**/*'
   
   # s.resource_bundles = {
